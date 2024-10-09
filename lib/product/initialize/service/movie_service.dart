@@ -45,9 +45,13 @@ final class MovieService extends IMovieService {
   }
 
   @override
-  Future<List<Movie>?> getNowPlayingMovies() {
-    // TODO: implement getNowPlayingMovies
-    throw UnimplementedError();
+  Future<List<Movie>?> getNowPlayingMovies() async {
+    final response = await _networkManager.send<MovieLists, MovieLists>(
+      ServicePaths.nowPlayingMoviesPath,
+      parseModel: MovieLists(),
+      method: RequestType.GET,
+    );
+    return response.data?.results;
   }
 
   @override
@@ -61,14 +65,22 @@ final class MovieService extends IMovieService {
   }
 
   @override
-  Future<List<Movie>?> getTopRatedMovies() {
-    // TODO: implement getTopRatedMovies
-    throw UnimplementedError();
+  Future<List<Movie>?> getTopRatedMovies() async {
+    final response = await _networkManager.send<MovieLists, MovieLists>(
+      ServicePaths.topRatedMoviesPath,
+      parseModel: MovieLists(),
+      method: RequestType.GET,
+    );
+    return response.data?.results;
   }
 
   @override
-  Future<List<Movie>?> getUpcomingMovies() {
-    // TODO: implement getUpcomingMovies
-    throw UnimplementedError();
+  Future<List<Movie>?> getUpcomingMovies() async {
+    final response = await _networkManager.send<MovieLists, MovieLists>(
+      ServicePaths.upcomingMoviesPath,
+      parseModel: MovieLists(),
+      method: RequestType.GET,
+    );
+    return response.data?.results;
   }
 }
