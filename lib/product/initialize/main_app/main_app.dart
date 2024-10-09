@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:popcorn_v2/product/utils/constants/product_constants.dart';
 
 final class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -11,7 +12,7 @@ final class MainApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       debugShowCheckedModeBanner: false,
-      title: 'Popcorn V2',
+      title: ProductConstants.appName,
     );
   }
 }
