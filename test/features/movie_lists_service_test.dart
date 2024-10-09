@@ -11,7 +11,7 @@ void main() {
   late final IMovieService movieService =
       MovieService(networkManager: networkManager);
 
-  group('movies', () {
+  group('Movie Lists Test', () {
     test('Get Popular Movies', () async {
       final response = await movieService.getPopularMovies();
       expect(response, isNotNull);
@@ -31,5 +31,17 @@ void main() {
       final response = await movieService.getNowPlayingMovies();
       expect(response, isNotNull);
     });
+  });
+
+  const movieId = '533535';
+
+  test('Get Movie Detail', () async {
+    final response = await movieService.getMovieDetail(movieId);
+    expect(response, isNotNull);
+  });
+
+  test('Get Movie Videos', () async {
+    final response = await movieService.getMovieVideos(movieId);
+    expect(response, isNotNull);
   });
 }

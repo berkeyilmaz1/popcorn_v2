@@ -1,9 +1,9 @@
 import 'package:popcorn_v2/core/service/model/base_error_model.dart';
-import 'package:popcorn_v2/product/initialize/service/model/cast_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_detail_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_lists_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/service_paths.dart';
+import 'package:popcorn_v2/product/initialize/service/model/trailer_and_videos_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/videos_model.dart';
 import 'package:vexana/vexana.dart';
 
@@ -18,30 +18,38 @@ abstract class IMovieService {
   Future<List<Movie>?> getTopRatedMovies();
   Future<List<Movie>?> getUpcomingMovies();
   Future<List<Movie>?> getNowPlayingMovies();
-  Future<MovieDetail> getMovieDetail(int movieId);
-  Future<List<Cast>?> getMovieCast(int movieId);
-  Future<List<Videos>?> getMovieVideos(int movieId);
+  Future<MovieDetail?> getMovieDetail(String movieId);
+  // Future<List<Cast>?> getMovieCast(String movieId);
+  Future<List<Videos>?> getMovieVideos(String movieId);
 }
 
 final class MovieService extends IMovieService {
   MovieService({required super.networkManager});
 
+  // @override
+  // Future<List<Cast>?> getMovieCast(String movieId) {
+  //
+  // }
+
   @override
-  Future<List<Cast>?> getMovieCast(int movieId) {
-    // TODO: implement getMovieCast
-    throw UnimplementedError();
+  Future<MovieDetail?> getMovieDetail(String movieId) async {
+    final response = await _networkManager.send<MovieDetail, MovieDetail>(
+      ServicePaths.movieDetailsPath(movieId),
+      parseModel: MovieDetail(),
+      method: RequestType.GET,
+    );
+    return response.data;
   }
 
   @override
-  Future<MovieDetail> getMovieDetail(int movieId) {
-    // TODO: implement getMovieDetail
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<List<Videos>?> getMovieVideos(int movieId) {
-    // TODO: implement getMovieVideos
-    throw UnimplementedError();
+  Future<List<Videos>?> getMovieVideos(String movieId) async {
+    final response =
+        await _networkManager.send<TrailerAndVideos, TrailerAndVideos>(
+      ServicePaths.movieVideosPath(movieId),
+      parseModel: TrailerAndVideos(),
+      method: RequestType.GET,
+    );
+    return response.data?.results;
   }
 
   @override
