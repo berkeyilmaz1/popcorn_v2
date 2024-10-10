@@ -16,7 +16,7 @@ final class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: ProductConstants.appName,
       theme: ThemeData(
-        scaffoldBackgroundColor: ProductColors.backgroundColor,
+        scaffoldBackgroundColor: ProductColors.backgroundColor, 
       ),
       home: const OnboardView(),
     );

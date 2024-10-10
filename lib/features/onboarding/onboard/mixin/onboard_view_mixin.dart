@@ -4,7 +4,6 @@ import 'package:popcorn_v2/features/onboarding/pages/onboard_pages.dart';
 
 /// Mixin for [OnboardView] to separate the logic from the view.
 mixin OnboardViewMixin on State<OnboardView> {
-  /// ValueNotifier for the current page index
   final ValueNotifier<int> _currentPage = ValueNotifier<int>(0);
   ValueNotifier<int> get currentPage => _currentPage;
 

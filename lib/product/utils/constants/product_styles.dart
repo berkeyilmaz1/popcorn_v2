@@ -14,4 +14,10 @@ final class ProductStyles {
         fontSize: 16,
         fontWeight: FontWeight.normal,
       );
+
+  TextStyle get onboardSkip => const TextStyle(
+        color: ProductColors.purple2,
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+      );
 }
