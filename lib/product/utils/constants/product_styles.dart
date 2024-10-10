@@ -20,4 +20,21 @@ final class ProductStyles {
         fontSize: 18,
         fontWeight: FontWeight.bold,
       );
+
+  TextStyle get orDivider => const TextStyle(
+        color: Colors.grey,
+        fontSize: 18,
+      );
+
+  TextStyle get authButton => const TextStyle(
+        color: ProductColors.white,
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+      );
+
+  TextStyle get appTitle => const TextStyle(
+        color: ProductColors.white,
+        fontSize: 48,
+        fontWeight: FontWeight.bold,
+      );
 }

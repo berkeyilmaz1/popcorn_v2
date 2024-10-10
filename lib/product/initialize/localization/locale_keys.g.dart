@@ -16,5 +16,9 @@ abstract class  LocaleKeys {
   static const onboarding_page4_description = 'onboarding.page4.description';
   static const onboarding_page4 = 'onboarding.page4';
   static const onboarding = 'onboarding';
+  static const auth_or = 'auth.or';
+  static const auth_logIn = 'auth.logIn';
+  static const auth_signUp = 'auth.signUp';
+  static const auth = 'auth';
 
 }

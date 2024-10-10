@@ -18,6 +18,11 @@
         "title": "Receive Personalized Movie Recommendations",
         "description": "Get movie suggestions tailored to your watching preferences."
       }
+    },
+    "auth":{
+      "or": "or",
+      "logIn": "Log In",
+      "signUp": "Sign Up"
     }
   }
   
