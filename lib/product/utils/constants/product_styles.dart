@@ -1,0 +1,17 @@
+import 'package:flutter/material.dart';
+import 'package:popcorn_v2/product/theme/product_colors.dart';
+
+final class ProductStyles {
+  static final instance = ProductStyles();
+  TextStyle get onboardTitle => const TextStyle(
+        color: ProductColors.white,
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+      );
+
+  TextStyle get onboardDescription => const TextStyle(
+        color: ProductColors.white,
+        fontSize: 16,
+        fontWeight: FontWeight.normal,
+      );
+}
