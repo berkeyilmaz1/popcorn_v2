@@ -28,7 +28,9 @@ dependencies:
 
   #Json
   json_annotation: ^4.9.0
-  
+
+  #Cache
+  shared_preferences: ^2.3.2
 
   #UI
   toastification: ^2.3.0
