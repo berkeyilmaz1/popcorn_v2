@@ -1,0 +1,28 @@
+{
+    "onboarding":{ 
+        "skip": "Skip",
+        "next": "Next",
+        "page1": {
+        "title": "Discover the Latest Movies",
+        "description": "Instantly view the newest and trending films in theaters."
+      },
+        "page2": {
+        "title": "Follow Your Favorite Movies",
+        "description": "Save movies you like, add them to your watchlist, and easily find them later."
+      },
+        "page3": {
+        "title": "Get Detailed Information About Movies",
+        "description": "Learn more about movies with cast info, trailers, and user reviews."
+      },
+        "page4": {
+        "title": "Receive Personalized Movie Recommendations",
+        "description": "Get movie suggestions tailored to your watching preferences."
+      }
+    },
+    "auth":{
+      "or": "or",
+      "logIn": "Log In",
+      "signUp": "Sign Up"
+    }
+  }
+  
