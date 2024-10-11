@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:popcorn_v2/features/authentication/auth_view.dart';
 import 'package:popcorn_v2/features/home/home_view.dart';
 import 'package:popcorn_v2/features/onboarding/onboard/mixin/onboard_view_mixin.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
@@ -40,7 +41,8 @@ class _OnboardViewState extends State<OnboardView> with OnboardViewMixin {
                     style: ProductStyles.instance.onboardSkip,
                   ).tr(),
                 ).ext.toDisabled(
-                    disable: currentPage.value == onboardingPages.length - 1),
+                      disable: currentPage.value == onboardingPages.length - 1,
+                    ),
                 SmoothPageIndicator(
                   controller: onboardingController,
                   count: onboardingPages.length,
@@ -55,9 +57,10 @@ class _OnboardViewState extends State<OnboardView> with OnboardViewMixin {
                         onboardingPages.length - 1) {
                       Navigator.of(context).push(
                         MaterialPageRoute<HomeView>(
-                          builder: (context) => const HomeView(),
+                          builder: (context) => const AuthView(),
                         ),
                       );
+                      completeOnboarding();
                     }
                     onboardingController.nextPage(
                       duration: const Duration(milliseconds: 500),

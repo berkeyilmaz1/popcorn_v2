@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:popcorn_v2/features/authentication/auth_view.dart';
+import 'package:popcorn_v2/features/splash/splash_view.dart';
 import 'package:popcorn_v2/product/theme/product_colors.dart';
 import 'package:popcorn_v2/product/utils/constants/product_constants.dart';
 
@@ -18,7 +18,7 @@ final class MainApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: ProductColors.backgroundColor,
       ),
-      home: const AuthView(),
+      home: const SplashView(),
     );
   }
 }
