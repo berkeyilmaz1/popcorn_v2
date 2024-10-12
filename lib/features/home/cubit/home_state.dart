@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_detail_model.dart';
+import 'package:popcorn_v2/product/initialize/service/model/movie_images_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/videos_model.dart';
 
@@ -12,6 +13,7 @@ final class HomeState extends Equatable {
     this.nowPlayingMovies,
     this.movieDetail,
     this.movieVideos,
+    this.movieImages,
   });
 
   final bool isLoading;
@@ -21,6 +23,7 @@ final class HomeState extends Equatable {
   final List<Movie>? nowPlayingMovies;
   final MovieDetail? movieDetail;
   final List<Videos>? movieVideos;
+  final List<MovieImages>? movieImages;
 
   @override
   List<Object?> get props => [
@@ -29,6 +32,9 @@ final class HomeState extends Equatable {
         topRatedMovies,
         upcomingMovies,
         nowPlayingMovies,
+        movieDetail,
+        movieVideos,
+        movieImages,
       ];
 
   HomeState copyWith({
@@ -39,6 +45,7 @@ final class HomeState extends Equatable {
     List<Movie>? nowPlayingMovies,
     MovieDetail? movieDetail,
     List<Videos>? movieVideos,
+    List<MovieImages>? movieImages,
   }) {
     return HomeState(
       isLoading: isLoading ?? this.isLoading,
@@ -48,6 +55,7 @@ final class HomeState extends Equatable {
       nowPlayingMovies: nowPlayingMovies ?? this.nowPlayingMovies,
       movieDetail: movieDetail ?? this.movieDetail,
       movieVideos: movieVideos ?? this.movieVideos,
+      movieImages: movieImages ?? this.movieImages,
     );
   }
 }
