@@ -22,7 +22,7 @@ abstract class IMovieService {
   Future<MovieDetail?> getMovieDetail(String movieId);
   // Future<List<Cast>?> getMovieCast(String movieId);
   Future<List<Videos>?> getMovieVideos(String movieId);
-  Future<List<Images>?> getMovieImages(String movieId);
+  Future<List<MovieImages>?> getMovieImages(String movieId);
 }
 
 final class MovieService extends IMovieService {
@@ -95,10 +95,11 @@ final class MovieService extends IMovieService {
   }
 
   @override
-  Future<List<Images>?> getMovieImages(String movieId) async {
-    final response = await _networkManager.send<MovieImages, MovieImages>(
+  Future<List<MovieImages>?> getMovieImages(String movieId) async {
+    final response =
+        await _networkManager.send<MovieImagesList, MovieImagesList>(
       ServicePaths.movieImagesPath(movieId),
-      parseModel: MovieImages(),
+      parseModel: MovieImagesList(),
       method: RequestType.GET,
     );
     return response.data?.backdrops;

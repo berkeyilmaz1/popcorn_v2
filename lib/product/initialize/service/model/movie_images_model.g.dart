@@ -6,18 +6,19 @@ part of 'movie_images_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-MovieImages _$MovieImagesFromJson(Map<String, dynamic> json) => MovieImages(
+MovieImagesList _$MovieImagesListFromJson(Map<String, dynamic> json) =>
+    MovieImagesList(
       backdrops: (json['backdrops'] as List<dynamic>?)
-          ?.map((e) => Images.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => MovieImages.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$MovieImagesToJson(MovieImages instance) =>
+Map<String, dynamic> _$MovieImagesListToJson(MovieImagesList instance) =>
     <String, dynamic>{
       'backdrops': instance.backdrops,
     };
 
-Images _$ImagesFromJson(Map<String, dynamic> json) => Images(
+MovieImages _$MovieImagesFromJson(Map<String, dynamic> json) => MovieImages(
       aspectRatio: (json['aspect_ratio'] as num?)?.toDouble(),
       height: (json['height'] as num?)?.toInt(),
       filePath: json['file_path'] as String?,
@@ -26,7 +27,8 @@ Images _$ImagesFromJson(Map<String, dynamic> json) => Images(
       width: (json['width'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$ImagesToJson(Images instance) => <String, dynamic>{
+Map<String, dynamic> _$MovieImagesToJson(MovieImages instance) =>
+    <String, dynamic>{
       'aspect_ratio': instance.aspectRatio,
       'height': instance.height,
       'file_path': instance.filePath,

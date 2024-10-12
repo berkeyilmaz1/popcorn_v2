@@ -6,6 +6,7 @@ import 'package:popcorn_v2/product/initialize/service/movie_service.dart';
 
 mixin HomeViewMixin on State<HomeView>, BaseState<HomeView> {
   late final HomeCubit _homeCubit;
+  HomeCubit get homeCubit => _homeCubit;
   @override
   void initState() {
     super.initState();

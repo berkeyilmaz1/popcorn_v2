@@ -5,36 +5,36 @@ import 'package:vexana/vexana.dart';
 part 'movie_images_model.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-final class MovieImages extends INetworkModel<MovieImages> with EquatableMixin {
-  MovieImages({
+final class MovieImagesList extends INetworkModel<MovieImagesList> with EquatableMixin {
+  MovieImagesList({
     this.backdrops,
   });
 
-  factory MovieImages.fromJson(Map<String, dynamic> json) =>
-      _$MovieImagesFromJson(json);
-  final List<Images>? backdrops;
+  factory MovieImagesList.fromJson(Map<String, dynamic> json) =>
+      _$MovieImagesListFromJson(json);
+  final List<MovieImages>? backdrops;
 
   @override
-  MovieImages fromJson(Map<String, dynamic> json) => MovieImages.fromJson(json);
+  MovieImagesList fromJson(Map<String, dynamic> json) => MovieImagesList.fromJson(json);
 
   @override
-  Map<String, dynamic>? toJson() => _$MovieImagesToJson(this);
+  Map<String, dynamic>? toJson() => _$MovieImagesListToJson(this);
 
   @override
   List<Object?> get props => [backdrops];
 
-  MovieImages copyWith({
-    List<Images>? backdrops,
+  MovieImagesList copyWith({
+    List<MovieImages>? backdrops,
   }) {
-    return MovieImages(
+    return MovieImagesList(
       backdrops: backdrops ?? this.backdrops,
     );
   }
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class Images extends INetworkModel<Images> with EquatableMixin {
-  Images({
+class MovieImages extends INetworkModel<MovieImages> with EquatableMixin {
+  MovieImages({
     this.aspectRatio,
     this.height,
     this.filePath,
@@ -43,7 +43,7 @@ class Images extends INetworkModel<Images> with EquatableMixin {
     this.width,
   });
 
-  factory Images.fromJson(Map<String, dynamic> json) => _$ImagesFromJson(json);
+  factory MovieImages.fromJson(Map<String, dynamic> json) => _$MovieImagesFromJson(json);
   final double? aspectRatio;
   final int? height;
   final String? filePath;
@@ -52,16 +52,16 @@ class Images extends INetworkModel<Images> with EquatableMixin {
   final int? width;
 
   @override
-  Images fromJson(Map<String, dynamic> json) => Images.fromJson(json);
+  MovieImages fromJson(Map<String, dynamic> json) => MovieImages.fromJson(json);
 
   @override
-  Map<String, dynamic>? toJson() => _$ImagesToJson(this);
+  Map<String, dynamic>? toJson() => _$MovieImagesToJson(this);
 
   @override
   List<Object?> get props =>
       [aspectRatio, height, filePath, voteAverage, voteCount, width];
 
-  Images copyWith({
+  MovieImages copyWith({
     double? aspectRatio,
     int? height,
     void iso6391,
@@ -70,7 +70,7 @@ class Images extends INetworkModel<Images> with EquatableMixin {
     int? voteCount,
     int? width,
   }) {
-    return Images(
+    return MovieImages(
       aspectRatio: aspectRatio ?? this.aspectRatio,
       height: height ?? this.height,
       filePath: filePath ?? this.filePath,

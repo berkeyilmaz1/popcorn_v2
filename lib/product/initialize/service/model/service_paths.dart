@@ -24,4 +24,8 @@ final class ServicePaths {
   static String movieImagesPath(String movieId) {
     return '$movieId/images?api_key=$apiKey';
   }
+///MARK: - Image Paths
+  static String posterPath(String imageUrl) {
+    return 'https://image.tmdb.org/t/p/w500$imageUrl';
+  }
 }
