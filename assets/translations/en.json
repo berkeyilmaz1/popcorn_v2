@@ -23,6 +23,18 @@
       "or": "or",
       "logIn": "Log In",
       "signUp": "Sign Up"
+    },
+    "home":{
+      "popularMovies": "Popular Movies",
+      "nowPlaying": "New Movies In Theaters",
+      "upcoming": "Upcoming Movies",
+      "topRated": "Top Rated Movies ",
+      "seeAll": "See All",
+      "search": "Search",
+      "noMovies": "No movies found",
+      "noMoviesDescription": "We couldn't find any movies matching your search criteria. Please try again.",
+      "noMoviesButton": "Try Again"
+    
     }
   }
   
