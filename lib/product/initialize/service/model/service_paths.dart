@@ -2,7 +2,7 @@ final class ServicePaths {
   ServicePaths._();
 
   ///TODO REMOVE APIKEY
-  static const apiKey = 'apiKey';
+  static const apiKey = '9951b759a9637d2c0390dba63a92e874';
 
   ///MARK: - Movie Paths
   static const popularMoviesPath = 'popular?api_key=$apiKey';
@@ -18,5 +18,10 @@ final class ServicePaths {
   ///MARK: - Movie Videos
   static String movieVideosPath(String movieId) {
     return '$movieId/videos?api_key=$apiKey';
+  }
+
+  ///MARK: - Movie Images
+  static String movieImagesPath(String movieId) {
+    return '$movieId/images?api_key=$apiKey';
   }
 }
