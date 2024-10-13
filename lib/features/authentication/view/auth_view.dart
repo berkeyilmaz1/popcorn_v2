@@ -1,15 +1,13 @@
-import 'dart:ui';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
 import 'package:popcorn_v2/product/theme/product_colors.dart';
-import 'package:popcorn_v2/product/utils/constants/asset_constants.dart';
 import 'package:popcorn_v2/product/utils/constants/product_constants.dart';
 import 'package:popcorn_v2/product/utils/constants/product_styles.dart';
 import 'package:popcorn_v2/product/widgets/custom_elevated_button.dart';
 import 'package:popcorn_v2/product/widgets/page/page_padding.dart';
 
-part 'widgets/or_divider.dart';
+part '../widgets/or_divider.dart';
 
 final class AuthView extends StatefulWidget {
   const AuthView({super.key});
@@ -24,19 +22,19 @@ class _AuthViewState extends State<AuthView> {
     return Scaffold(
       body: Stack(
         children: [
-          Image.asset(
-            AssetConstants.icPoster,
-          ),
-          //TODO
-          Positioned.fill(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(
-                sigmaX: 2,
-                sigmaY: 2,
-              ), // X ve Y yönünde bulanıklık derecesi
-              child: Container(),
-            ),
-          ),
+          //TODOs
+          // Image.asset(
+          //   AssetConstants.icPoster,
+          // ),
+          // Positioned.fill(
+          //   child: BackdropFilter(
+          //     filter: ImageFilter.blur(
+          //       sigmaX: 2,
+          //       sigmaY: 2,
+          //     ), // X ve Y yönünde bulanıklık derecesi
+          //     child: Container(),
+          //   ),
+          // ),
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -44,7 +42,7 @@ class _AuthViewState extends State<AuthView> {
                 end: Alignment.bottomCenter,
                 colors: [
                   ProductColors.black.withOpacity(0.4),
-                  ProductColors.purple2.withOpacity(0.4),
+                  ProductColors.purple.withOpacity(0.4),
                 ],
               ),
             ),
@@ -59,14 +57,14 @@ class _AuthViewState extends State<AuthView> {
               ),
               const Spacer(),
               CustomElevatedButton(
-                backgroundColor: ProductColors.purple2,
+                backgroundColor: ProductColors.purple,
                 buttonText: LocaleKeys.auth_logIn,
                 onPressed: () {},
                 buttonTextStyle: ProductStyles.instance.authButton,
               ),
               const OrDivider(),
               CustomElevatedButton(
-                backgroundColor: ProductColors.purple2,
+                backgroundColor: ProductColors.purple,
                 buttonText: LocaleKeys.auth_signUp,
                 onPressed: () {},
                 buttonTextStyle: ProductStyles.instance.authButton,

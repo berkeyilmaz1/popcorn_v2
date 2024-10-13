@@ -20,5 +20,15 @@ abstract class  LocaleKeys {
   static const auth_logIn = 'auth.logIn';
   static const auth_signUp = 'auth.signUp';
   static const auth = 'auth';
+  static const home_popularMovies = 'home.popularMovies';
+  static const home_nowPlaying = 'home.nowPlaying';
+  static const home_upcoming = 'home.upcoming';
+  static const home_topRated = 'home.topRated';
+  static const home_seeAll = 'home.seeAll';
+  static const home_search = 'home.search';
+  static const home_noMovies = 'home.noMovies';
+  static const home_noMoviesDescription = 'home.noMoviesDescription';
+  static const home_noMoviesButton = 'home.noMoviesButton';
+  static const home = 'home';
 
 }

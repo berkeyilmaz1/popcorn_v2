@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:popcorn_v2/core/onboard_manager/onboard_manager.dart';
-import 'package:popcorn_v2/features/onboarding/onboard/onboard_view.dart';
+import 'package:popcorn_v2/features/onboarding/view/onboard_view.dart';
 import 'package:popcorn_v2/features/onboarding/pages/onboard_pages.dart';
 
 /// Mixin for [OnboardView] to separate the logic from the view.

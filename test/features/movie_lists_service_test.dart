@@ -44,4 +44,9 @@ void main() {
     final response = await movieService.getMovieVideos(movieId);
     expect(response, isNotNull);
   });
+
+  test('Get Movie Images', () async {
+    final response = await movieService.getMovieImages(movieId);
+    expect(response, isNotNull);
+  });
 }

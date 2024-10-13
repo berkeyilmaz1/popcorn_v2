@@ -1,4 +1,5 @@
-part of '../auth_view.dart';
+part of '../view/auth_view.dart';
+
 final class OrDivider extends StatelessWidget {
   const OrDivider({
     super.key,
@@ -18,7 +19,7 @@ final class OrDivider extends StatelessWidget {
             child: Text(
               LocaleKeys.auth_or,
               style: ProductStyles.instance.orDivider,
-            ),
+            ).tr(),
           ),
           const Expanded(
             child: Divider(),

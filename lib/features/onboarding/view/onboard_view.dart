@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:popcorn_v2/features/authentication/auth_view.dart';
-import 'package:popcorn_v2/features/home/home_view.dart';
-import 'package:popcorn_v2/features/onboarding/onboard/mixin/onboard_view_mixin.dart';
+import 'package:popcorn_v2/features/authentication/view/auth_view.dart';
+import 'package:popcorn_v2/features/home/view/home_view.dart';
+import 'package:popcorn_v2/features/onboarding/view/mixin/onboard_view_mixin.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
 import 'package:popcorn_v2/product/theme/product_colors.dart';
 import 'package:popcorn_v2/product/utils/constants/product_styles.dart';
@@ -47,7 +47,7 @@ class _OnboardViewState extends State<OnboardView> with OnboardViewMixin {
                   controller: onboardingController,
                   count: onboardingPages.length,
                   effect: WormEffect(
-                    activeDotColor: ProductColors.purple2,
+                    activeDotColor: ProductColors.purple,
                     dotColor: ProductColors.black.withOpacity(0.5),
                   ),
                 ),
@@ -69,7 +69,7 @@ class _OnboardViewState extends State<OnboardView> with OnboardViewMixin {
                   },
                   icon: const Icon(
                     Icons.arrow_forward,
-                    color: ProductColors.purple2,
+                    color: ProductColors.purple,
                   ),
                 ),
               ],

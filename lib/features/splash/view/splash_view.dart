@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:popcorn_v2/features/splash/mixin/splash_mixin.dart';
+import 'package:popcorn_v2/features/splash/view/mixin/splash_mixin.dart';
 import 'package:popcorn_v2/product/utils/constants/asset_constants.dart';
 
 class SplashView extends StatefulWidget {

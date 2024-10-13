@@ -16,7 +16,7 @@ final class ProductStyles {
       );
 
   TextStyle get onboardSkip => const TextStyle(
-        color: ProductColors.purple2,
+        color: ProductColors.purple,
         fontSize: 18,
         fontWeight: FontWeight.bold,
       );
@@ -37,4 +37,7 @@ final class ProductStyles {
         fontSize: 48,
         fontWeight: FontWeight.bold,
       );
+
+
+   
 }

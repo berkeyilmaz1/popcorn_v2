@@ -1,5 +1,6 @@
 import 'package:popcorn_v2/core/service/model/base_error_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_detail_model.dart';
+import 'package:popcorn_v2/product/initialize/service/model/movie_images_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_lists_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/service_paths.dart';
@@ -21,6 +22,7 @@ abstract class IMovieService {
   Future<MovieDetail?> getMovieDetail(String movieId);
   // Future<List<Cast>?> getMovieCast(String movieId);
   Future<List<Videos>?> getMovieVideos(String movieId);
+  Future<List<MovieImages>?> getMovieImages(String movieId);
 }
 
 final class MovieService extends IMovieService {
@@ -90,5 +92,16 @@ final class MovieService extends IMovieService {
       method: RequestType.GET,
     );
     return response.data?.results;
+  }
+
+  @override
+  Future<List<MovieImages>?> getMovieImages(String movieId) async {
+    final response =
+        await _networkManager.send<MovieImagesList, MovieImagesList>(
+      ServicePaths.movieImagesPath(movieId),
+      parseModel: MovieImagesList(),
+      method: RequestType.GET,
+    );
+    return response.data?.backdrops;
   }
 }
