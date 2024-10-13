@@ -4,12 +4,12 @@ final class MovieAndTitle extends StatelessWidget {
   const MovieAndTitle({
     required this.itemCount,
     required this.itemBuilder,
-    required this.title,
+      this.title,
     super.key,
   });
   final int itemCount;
   final Widget Function(BuildContext, int) itemBuilder;
-  final String title;
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ final class MovieAndTitle extends StatelessWidget {
           Padding(
             padding: const PagePadding.horizontal16Symmetric(),
             child: Text(
-              title,
+              title ?? '',
               style: const TextStyle(color: Colors.white),
             ).tr(),
           ),

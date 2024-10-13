@@ -10,6 +10,7 @@ abstract class IHomeCubit {
   Future<void> getMovieDetail(String movieId);
   Future<void> getMovieVideos(String movieId);
   Future<void> getMovieImages(String movieId);
+  Future<void> getPopularsFirstImage();
 }
 
 final class HomeCubit extends Cubit<HomeState> implements IHomeCubit {
@@ -73,6 +74,17 @@ final class HomeCubit extends Cubit<HomeState> implements IHomeCubit {
     final response = await _movieService.getMovieImages(movieId);
     _changeLoading(false);
     emit(state.copyWith(movieImages: response));
+  }
+
+  @override
+  Future<void> getPopularsFirstImage() async {
+    _changeLoading(true);
+    final popular = await _movieService.getPopularMovies();
+    final popularFirst = popular?.first;
+    final response =
+        await _movieService.getMovieImages(popularFirst?.id.toString() ?? '');
+    _changeLoading(false);
+    emit(state.copyWith(highlightMovie: response));
   }
 
   void _changeLoading(bool value) {

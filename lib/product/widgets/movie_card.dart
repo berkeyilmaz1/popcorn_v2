@@ -7,7 +7,7 @@ import 'package:popcorn_v2/product/widgets/page/page_padding.dart';
 final class MovieCard extends StatelessWidget {
   const MovieCard({
     required this.imageUrl,
-    required this.movieTitle,
+    this.movieTitle,
     super.key,
   });
   final String? imageUrl;

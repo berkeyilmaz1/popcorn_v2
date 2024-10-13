@@ -25,6 +25,6 @@ mixin HomeViewMixin on State<HomeView>, BaseState<HomeView> {
     await _homeCubit.getTopRatedMovies();
     await _homeCubit.getUpcomingMovies();
     await _homeCubit.getNowPlayingMovies();
-    
+    await _homeCubit.getPopularsFirstImage();
   }
 }

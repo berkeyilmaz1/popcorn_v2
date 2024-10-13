@@ -14,6 +14,7 @@ final class HomeState extends Equatable {
     this.movieDetail,
     this.movieVideos,
     this.movieImages,
+    this.highlightMovie,
   });
 
   final bool isLoading;
@@ -24,6 +25,7 @@ final class HomeState extends Equatable {
   final MovieDetail? movieDetail;
   final List<Videos>? movieVideos;
   final List<MovieImages>? movieImages;
+  final List<MovieImages>? highlightMovie;
 
   @override
   List<Object?> get props => [
@@ -35,6 +37,7 @@ final class HomeState extends Equatable {
         movieDetail,
         movieVideos,
         movieImages,
+        highlightMovie,
       ];
 
   HomeState copyWith({
@@ -46,6 +49,7 @@ final class HomeState extends Equatable {
     MovieDetail? movieDetail,
     List<Videos>? movieVideos,
     List<MovieImages>? movieImages,
+    List<MovieImages>? highlightMovie,
   }) {
     return HomeState(
       isLoading: isLoading ?? this.isLoading,
@@ -56,6 +60,7 @@ final class HomeState extends Equatable {
       movieDetail: movieDetail ?? this.movieDetail,
       movieVideos: movieVideos ?? this.movieVideos,
       movieImages: movieImages ?? this.movieImages,
+      highlightMovie: highlightMovie ?? this.highlightMovie,
     );
   }
 }
