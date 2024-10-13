@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:popcorn_v2/features/home/cubit/home_state.dart';
-import 'package:popcorn_v2/product/initialize/service/model/movie_images_model.dart';
 import 'package:popcorn_v2/product/initialize/service/movie_service.dart';
 
 abstract class IHomeCubit {
@@ -10,7 +9,7 @@ abstract class IHomeCubit {
   Future<void> getNowPlayingMovies();
   Future<void> getMovieDetail(String movieId);
   Future<void> getMovieVideos(String movieId);
-  Future<void> getMovieImages();
+  Future<void> getMovieImages(String movieId);
 }
 
 final class HomeCubit extends Cubit<HomeState> implements IHomeCubit {
@@ -68,15 +67,15 @@ final class HomeCubit extends Cubit<HomeState> implements IHomeCubit {
     emit(state.copyWith(upcomingMovies: response));
   }
 
- 
+  @override
+  Future<void> getMovieImages(String movieId) async {
+    _changeLoading(true);
+    final response = await _movieService.getMovieImages(movieId);
+    _changeLoading(false);
+    emit(state.copyWith(movieImages: response));
+  }
 
   void _changeLoading(bool value) {
     emit(state.copyWith(isLoading: value));
-  }
-  
-  @override
-  Future<void> getMovieImages() {
-    // TODO: implement getMovieImages
-    throw UnimplementedError();
   }
 }
