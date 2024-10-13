@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:popcorn_v2/features/home/cubit/home_cubit.dart';
 import 'package:popcorn_v2/features/home/cubit/home_state.dart';
 import 'package:popcorn_v2/features/home/view/mixin/home_view_mixin.dart';
+import 'package:popcorn_v2/features/movie_detail/view/movie_detail_view.dart';
 import 'package:popcorn_v2/product/base/base_state.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
 import 'package:popcorn_v2/product/theme/product_colors.dart';
@@ -56,6 +57,15 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
                       final popularMovie = state.popularMovies?[index];
                       if (state.popularMovies == null) const SizedBox.shrink();
                       return MovieCard(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute<MovieDetailView>(
+                            builder: (context) => MovieDetailView(
+                              movie: popularMovie!,
+                              homeCubit: homeCubit,
+                            ),
+                          ),
+                        ),
                         imageUrl: popularMovie?.posterPath,
                         movieTitle: popularMovie?.title,
                       );
@@ -68,6 +78,15 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
                       final topRatedMovie = state.topRatedMovies?[index];
                       if (state.topRatedMovies == null) const SizedBox.shrink();
                       return MovieCard(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute<MovieDetailView>(
+                            builder: (context) => MovieDetailView(
+                              movie: topRatedMovie!,
+                              homeCubit: homeCubit,
+                            ),
+                          ),
+                        ),
                         imageUrl: topRatedMovie?.posterPath,
                         movieTitle: topRatedMovie?.title,
                       );
@@ -80,6 +99,15 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
                       final upcomingMovie = state.upcomingMovies?[index];
                       if (state.upcomingMovies == null) const SizedBox.shrink();
                       return MovieCard(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute<MovieDetailView>(
+                            builder: (context) => MovieDetailView(
+                              movie: upcomingMovie!,
+                              homeCubit: homeCubit,
+                            ),
+                          ),
+                        ),
                         imageUrl: upcomingMovie?.posterPath,
                         movieTitle: upcomingMovie?.title,
                       );
@@ -91,9 +119,19 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
                     itemBuilder: (context, index) {
                       final nowPlayingMovie = state.nowPlayingMovies?[index];
                       // ignore: lines_longer_than_80_chars
-                      if (state.nowPlayingMovies == null)
+                      if (state.nowPlayingMovies == null) {
                         const SizedBox.shrink();
+                      }
                       return MovieCard(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute<MovieDetailView>(
+                            builder: (context) => MovieDetailView(
+                              movie: nowPlayingMovie!,
+                              homeCubit: homeCubit,
+                            ),
+                          ),
+                        ),
                         imageUrl: nowPlayingMovie?.posterPath,
                         movieTitle: nowPlayingMovie?.title,
                       );

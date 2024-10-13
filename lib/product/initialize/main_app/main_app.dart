@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:popcorn_v2/features/home/tab/tab_view.dart';
+import 'package:popcorn_v2/features/home/view/home_view.dart';
 import 'package:popcorn_v2/product/theme/product_colors.dart';
 import 'package:popcorn_v2/product/utils/constants/product_constants.dart';
 
@@ -24,7 +24,7 @@ final class MainApp extends StatelessWidget {
           labelColor: ProductColors.purple,
         ),
       ),
-      home: const TabView(),
+      home: const HomeView(),
     );
   }
 }

@@ -7,11 +7,13 @@ import 'package:popcorn_v2/product/widgets/page/page_padding.dart';
 final class MovieCard extends StatelessWidget {
   const MovieCard({
     required this.imageUrl,
+    this.onTap,
     this.movieTitle,
     super.key,
   });
   final String? imageUrl;
   final String? movieTitle;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +21,13 @@ final class MovieCard extends StatelessWidget {
       padding: const PagePadding.allLow(),
       child: ClipRRect(
         borderRadius: const BorderRadiusGeneral.all(),
-        child: CachedNetworkImage(
-          imageUrl: ServicePaths.posterPath(imageUrl ?? ''),
-          errorWidget: (context, url, error) => const Icon(Icons.error),
-          fit: BoxFit.cover,
+        child: GestureDetector(
+          onTap: onTap,
+          child: CachedNetworkImage(
+            imageUrl: ServicePaths.posterPath(imageUrl ?? ''),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );
