@@ -40,52 +40,66 @@ class _MovieDetailViewState extends State<MovieDetailView>
                 MovieInfoHeader(
                   movie: movie,
                 ),
-                Padding(
-                  padding: const PagePadding.all(),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(
-                        height:
-                            WidgetSizes.spacingXxl12 + WidgetSizes.spacingXxl7,
-                      ),
-                      const Text(
-                        LocaleKeys.detail_overview,
-                        style: TextStyle(color: Colors.white),
-                      ).tr(),
-                      Text(
-                        movie.overview ?? '',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        maxLines: WidgetSizes.spacingXSs.truncate(),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const Text(LocaleKeys.detail_images).tr(),
-                      BlocBuilder<HomeCubit, HomeState>(
-                        builder: (context, state) {
-                          final images = state.movieImages;
-                          return SizedBox(
-                            height: WidgetSizes.spacingXxlL13,
-                            child: ListView.builder(
-                              itemCount: images?.length ?? 0,
-                              itemBuilder: (BuildContext context, int index) {
-                                return CachedNetworkImage(
-                                  imageUrl: images?[index].filePath ?? '',
-                                );
-                              },
-                            ),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                ),
+                MovieInfoFooter(movie: movie),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class MovieInfoFooter extends StatelessWidget {
+  const MovieInfoFooter({
+    super.key,
+    required this.movie,
+  });
+
+  final Movie movie;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const PagePadding.all(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(
+            height:
+                WidgetSizes.spacingXxl12 + WidgetSizes.spacingXxl7,
+          ),
+          const Text(
+            LocaleKeys.detail_overview,
+            style: TextStyle(color: Colors.white),
+          ).tr(),
+          Text(
+            movie.overview ?? '',
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+            maxLines: WidgetSizes.spacingXSs.truncate(),
+            overflow: TextOverflow.ellipsis,
+          ),
+          const Text(LocaleKeys.detail_images).tr(),
+          BlocBuilder<HomeCubit, HomeState>(
+            builder: (context, state) {
+              final images = state.movieImages;
+              return SizedBox(
+                height: WidgetSizes.spacingXxlL13,
+                child: ListView.builder(
+                  itemCount: images?.length ?? 0,
+                  itemBuilder: (BuildContext context, int index) {
+                    return CachedNetworkImage(
+                      imageUrl: images?[index].filePath ?? '',
+                    );
+                  },
+                ),
+              );
+            },
+          ),
+        ],
       ),
     );
   }
