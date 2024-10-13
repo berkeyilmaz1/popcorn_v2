@@ -7,6 +7,7 @@ import 'package:popcorn_v2/features/home/view/mixin/home_view_mixin.dart';
 import 'package:popcorn_v2/product/base/base_state.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
 import 'package:popcorn_v2/product/theme/product_colors.dart';
+import 'package:popcorn_v2/product/widgets/highlight_movie.dart';
 import 'package:popcorn_v2/product/widgets/movie_card.dart';
 import 'package:popcorn_v2/product/widgets/page/page_padding.dart';
 import 'package:popcorn_v2/product/widgets/widget_sizes.dart';
@@ -43,6 +44,11 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
             return SingleChildScrollView(
               child: Column(
                 children: [
+                  ///todo: add other movies
+                  HighlightMovie(
+                    imageUrl: state.highlightMovie?.first.filePath ?? '',
+                    movieTitle: state.popularMovies?.first.title ?? '',
+                  ),
                   MovieAndTitle(
                     title: LocaleKeys.home_popularMovies,
                     itemCount: state.popularMovies?.length ?? 0,
