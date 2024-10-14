@@ -5,6 +5,8 @@ import 'package:flutter/foundation.dart';
 @immutable
 final class WidgetSizes {
   const WidgetSizes._();
+   /// [value] is 0.0
+  static const double spacingZero = 0.0;
 
   /// [value] is 1.5
   static const double spacingXSSs = 1.5;

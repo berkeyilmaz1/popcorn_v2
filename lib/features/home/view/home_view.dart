@@ -61,8 +61,7 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
                           context,
                           MaterialPageRoute<MovieDetailView>(
                             builder: (context) => MovieDetailView(
-                              movie: popularMovie!,
-                              homeCubit: homeCubit,
+                              movie: popularMovie!, 
                             ),
                           ),
                         ),
@@ -82,8 +81,7 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
                           context,
                           MaterialPageRoute<MovieDetailView>(
                             builder: (context) => MovieDetailView(
-                              movie: topRatedMovie!,
-                              homeCubit: homeCubit,
+                              movie: topRatedMovie!, 
                             ),
                           ),
                         ),
@@ -103,8 +101,7 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
                           context,
                           MaterialPageRoute<MovieDetailView>(
                             builder: (context) => MovieDetailView(
-                              movie: upcomingMovie!,
-                              homeCubit: homeCubit,
+                              movie: upcomingMovie!, 
                             ),
                           ),
                         ),
@@ -127,8 +124,7 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
                           context,
                           MaterialPageRoute<MovieDetailView>(
                             builder: (context) => MovieDetailView(
-                              movie: nowPlayingMovie!,
-                              homeCubit: homeCubit,
+                              movie: nowPlayingMovie!, 
                             ),
                           ),
                         ),

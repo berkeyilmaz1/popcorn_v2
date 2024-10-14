@@ -7,6 +7,7 @@ import 'package:popcorn_v2/features/home/cubit/home_state.dart';
 import 'package:popcorn_v2/features/movie_detail/view/mixin/movie_detail_view_mixin.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_model.dart';
+import 'package:popcorn_v2/product/initialize/service/model/service_paths.dart';
 import 'package:popcorn_v2/product/theme/product_colors.dart';
 import 'package:popcorn_v2/product/widgets/movie_card.dart';
 import 'package:popcorn_v2/product/widgets/page/page_padding.dart';
@@ -15,11 +16,9 @@ import 'package:popcorn_v2/product/widgets/widget_sizes.dart';
 final class MovieDetailView extends StatefulWidget {
   const MovieDetailView({
     required this.movie,
-    required this.homeCubit,
     super.key,
   });
   final Movie movie;
-  final HomeCubit homeCubit;
 
   @override
   State<MovieDetailView> createState() => _MovieDetailViewState();
@@ -31,14 +30,40 @@ class _MovieDetailViewState extends State<MovieDetailView>
   Widget build(BuildContext context) {
     return SafeArea(
       child: BlocProvider(
-        create: (context) => homeCubit,
+        create: (context) => homecubit,
         child: Scaffold(
           body: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                MovieInfoHeader(
-                  movie: movie,
+                Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    MovieInfoHeader(movie: widget.movie),
+                    Positioned(
+                      bottom:
+                          -(WidgetSizes.spacingXxl12 + WidgetSizes.spacingL),
+                      left: WidgetSizes.spacingZero,
+                      right: WidgetSizes.spacingZero,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            flex: 2,
+                            child: MovieCard(
+                              imageUrl: widget.movie.posterPath ?? '',
+                            ),
+                          ),
+                          Expanded(
+                            flex: 3,
+                            child: Padding(
+                              padding:
+                                  const PagePadding.horizontal16Symmetric(),
+                              child: _TitleYearPoint(movie: widget.movie),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
                 MovieInfoFooter(movie: movie),
               ],
@@ -50,9 +75,8 @@ class _MovieDetailViewState extends State<MovieDetailView>
   }
 }
 
-class MovieInfoFooter extends StatelessWidget {
-  const MovieInfoFooter({
-    super.key,
+final class _TitleYearPoint extends StatelessWidget {
+  const _TitleYearPoint({
     required this.movie,
   });
 
@@ -60,47 +84,50 @@ class MovieInfoFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const PagePadding.all(),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height:
-                WidgetSizes.spacingXxl12 + WidgetSizes.spacingXxl7,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          movie.originalTitle ?? '',
+          style: const TextStyle(
+            color: ProductColors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: WidgetSizes.spacingL,
           ),
-          const Text(
-            LocaleKeys.detail_overview,
-            style: TextStyle(color: Colors.white),
-          ).tr(),
-          Text(
-            movie.overview ?? '',
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
+        ),
+        Text(
+          movie.releaseDate ?? '',
+          style: const TextStyle(color: ProductColors.white),
+        ),
+        const SizedBox(height: WidgetSizes.spacingXs),
+        Row(
+          children: [
+            const Icon(
+              Icons.star_rounded,
+              color: Colors.yellow,
+              size: WidgetSizes.spacingXxl1,
             ),
-            maxLines: WidgetSizes.spacingXSs.truncate(),
-            overflow: TextOverflow.ellipsis,
-          ),
-          const Text(LocaleKeys.detail_images).tr(),
-          BlocBuilder<HomeCubit, HomeState>(
-            builder: (context, state) {
-              final images = state.movieImages;
-              return SizedBox(
-                height: WidgetSizes.spacingXxlL13,
-                child: ListView.builder(
-                  itemCount: images?.length ?? 0,
-                  itemBuilder: (BuildContext context, int index) {
-                    return CachedNetworkImage(
-                      imageUrl: images?[index].filePath ?? '',
-                    );
-                  },
+            Column(
+              children: [
+                Text(
+                  movie.voteAverage!.toStringAsFixed(1),
+                  style: const TextStyle(
+                    color: ProductColors.white,
+                    fontSize: WidgetSizes.spacingMx,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              );
-            },
-          ),
-        ],
-      ),
+                Text(
+                  movie.voteCount.toString(),
+                  style: const TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
@@ -124,14 +151,19 @@ final class MovieInfoHeader extends StatelessWidget {
                 ProductColors.black,
                 Colors.transparent,
               ],
-              stops: [0.0, 1.0],
+              stops: [WidgetSizes.spacingZero, WidgetSizes.spacingXSSs],
             ).createShader(bounds);
           },
           blendMode: BlendMode.dstIn,
-          child: CachedNetworkImage(
-            imageUrl:
-                'https://image.tmdb.org/t/p/w500/yDHYTfA3R0jFYba16jBB1ef8oIt.jpg',
-            fit: BoxFit.cover,
+          child: BlocBuilder<HomeCubit, HomeState>(
+            builder: (context, state) {
+              final images = state.movieImages?.first;
+              return CachedNetworkImage(
+                imageUrl: ServicePaths.posterPath(
+                  images?.filePath ?? '',
+                ),
+              );
+            },
           ),
         ),
         Row(
@@ -140,7 +172,7 @@ final class MovieInfoHeader extends StatelessWidget {
             IconButton(
               icon: const Icon(
                 Icons.arrow_back,
-                color: Colors.white,
+                color: ProductColors.white,
               ),
               onPressed: () => Navigator.pop(context),
             ),
@@ -148,58 +180,76 @@ final class MovieInfoHeader extends StatelessWidget {
               onPressed: () {},
               icon: const Icon(
                 Icons.favorite_border,
-                color: Colors.white,
+                color: ProductColors.white,
               ),
             ),
           ],
         ),
-        Positioned(
-          bottom: -120,
-          left: 0,
-          child: Row(
-            children: [
-              SizedBox(
-                width: WidgetSizes.spacingXxl12 + WidgetSizes.spacingXxl7,
-                child: MovieCard(imageUrl: movie.posterPath ?? ''),
-              ),
-              Padding(
-                padding: const PagePadding.all(),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      movie.originalTitle ?? '',
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: WidgetSizes.spacingL,
-                      ),
-                    ),
-                    Text(
-                      movie.releaseDate ?? '',
-                      style: const TextStyle(color: Colors.white),
-                    ),
-                    const SizedBox(height: WidgetSizes.spacingXs),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.star_rounded,
-                          color: Colors.yellow,
-                          size: WidgetSizes.spacingXxl1,
-                        ),
-                        Text(
-                          '${movie.voteAverage}\n${movie.voteCount}',
-                          style: const TextStyle(color: Colors.white),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
       ],
+    );
+  }
+}
+
+class MovieInfoFooter extends StatelessWidget {
+  const MovieInfoFooter({
+    required this.movie,
+    super.key,
+  });
+
+  final Movie movie;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const PagePadding.all(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(
+            height: WidgetSizes.spacingXxl12 + WidgetSizes.spacingXsMid,
+          ),
+          const Text(
+            LocaleKeys.detail_overview,
+            style: TextStyle(
+                color: ProductColors.white, fontWeight: FontWeight.bold),
+          ).tr(),
+          Text(
+            movie.overview ?? '',
+            style: const TextStyle(
+              color: ProductColors.white,
+            ),
+            maxLines: WidgetSizes.spacingXSs.truncate(),
+            overflow: TextOverflow.ellipsis,
+          ),
+          const SizedBox(
+            height: WidgetSizes.spacingXsMid,
+          ),
+          const Text(
+            LocaleKeys.detail_images,
+            style: TextStyle(
+                color: ProductColors.white, fontWeight: FontWeight.bold),
+          ).tr(),
+          BlocBuilder<HomeCubit, HomeState>(
+            builder: (context, state) {
+              final images = state.movieImages;
+              return SizedBox(
+                height: WidgetSizes.spacingXxlL12,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: images?.length ?? 0,
+                  itemBuilder: (BuildContext context, int index) {
+                    return MovieCard(
+                      imageUrl: ServicePaths.posterPath(
+                        images?[index].filePath ?? '',
+                      ),
+                    );
+                  },
+                ),
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 }
