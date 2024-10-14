@@ -7,7 +7,7 @@ import 'package:popcorn_v2/features/home/view/mixin/home_view_mixin.dart';
 import 'package:popcorn_v2/features/movie_detail/view/movie_detail_view.dart';
 import 'package:popcorn_v2/product/base/base_state.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
-import 'package:popcorn_v2/product/theme/product_colors.dart';
+import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
 import 'package:popcorn_v2/product/widgets/highlight_movie.dart';
 import 'package:popcorn_v2/product/widgets/movie_card.dart';
 import 'package:popcorn_v2/product/widgets/page/page_padding.dart';
@@ -42,11 +42,14 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
         ),
         body: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
+            final popularMovie = state.popularMovies?.first;
+            if (popularMovie == null) return const SizedBox.shrink();
             return SingleChildScrollView(
               child: Column(
                 children: [
                   ///todo: add other movies
                   HighlightMovie(
+                    onTap: () => navigateToDetail(context, popularMovie),
                     imageUrl: state.highlightMovie?.first.filePath ?? '',
                     movieTitle: state.popularMovies?.first.title ?? '',
                   ),
@@ -61,7 +64,7 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
                           context,
                           MaterialPageRoute<MovieDetailView>(
                             builder: (context) => MovieDetailView(
-                              movie: popularMovie!, 
+                              movie: popularMovie!,
                             ),
                           ),
                         ),
@@ -81,7 +84,7 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
                           context,
                           MaterialPageRoute<MovieDetailView>(
                             builder: (context) => MovieDetailView(
-                              movie: topRatedMovie!, 
+                              movie: topRatedMovie!,
                             ),
                           ),
                         ),
@@ -101,7 +104,7 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
                           context,
                           MaterialPageRoute<MovieDetailView>(
                             builder: (context) => MovieDetailView(
-                              movie: upcomingMovie!, 
+                              movie: upcomingMovie!,
                             ),
                           ),
                         ),
@@ -124,7 +127,7 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
                           context,
                           MaterialPageRoute<MovieDetailView>(
                             builder: (context) => MovieDetailView(
-                              movie: nowPlayingMovie!, 
+                              movie: nowPlayingMovie!,
                             ),
                           ),
                         ),

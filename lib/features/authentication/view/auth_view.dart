@@ -1,7 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:popcorn_v2/features/home/tab/tab_view.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
-import 'package:popcorn_v2/product/theme/product_colors.dart';
+import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
 import 'package:popcorn_v2/product/utils/constants/product_constants.dart';
 import 'package:popcorn_v2/product/utils/constants/product_styles.dart';
 import 'package:popcorn_v2/product/widgets/custom_elevated_button.dart';
@@ -22,19 +23,6 @@ class _AuthViewState extends State<AuthView> {
     return Scaffold(
       body: Stack(
         children: [
-          //TODOs
-          // Image.asset(
-          //   AssetConstants.icPoster,
-          // ),
-          // Positioned.fill(
-          //   child: BackdropFilter(
-          //     filter: ImageFilter.blur(
-          //       sigmaX: 2,
-          //       sigmaY: 2,
-          //     ), // X ve Y yönünde bulanıklık derecesi
-          //     child: Container(),
-          //   ),
-          // ),
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -59,14 +47,28 @@ class _AuthViewState extends State<AuthView> {
               CustomElevatedButton(
                 backgroundColor: ProductColors.purple,
                 buttonText: LocaleKeys.auth_logIn,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute<TabView>(
+                      builder: (context) => const TabView(),
+                    ),
+                    (route) => false,
+                  );
+                },
                 buttonTextStyle: ProductStyles.instance.authButton,
               ),
               const OrDivider(),
               CustomElevatedButton(
                 backgroundColor: ProductColors.purple,
                 buttonText: LocaleKeys.auth_signUp,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute<TabView>(
+                      builder: (context) => const TabView(),
+                    ),
+                    (route) => false,
+                  );
+                },
                 buttonTextStyle: ProductStyles.instance.authButton,
               ),
             ],
