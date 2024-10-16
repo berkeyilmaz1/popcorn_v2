@@ -36,6 +36,7 @@ class _TabViewState extends State<TabView> {
           ),
         ),
         body: const TabBarView(
+          physics: NeverScrollableScrollPhysics( ),
           children: [
             Placeholder(),
             HomeView(),

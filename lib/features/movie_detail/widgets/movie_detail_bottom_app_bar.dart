@@ -1,7 +1,7 @@
 part of '../view/movie_detail_view.dart';
 
-final class MovieDetailBottomAppBarr extends StatelessWidget {
-  const MovieDetailBottomAppBarr({
+final class MovieDetailBottomAppBar extends StatelessWidget {
+  const MovieDetailBottomAppBar({
     super.key,
   });
 

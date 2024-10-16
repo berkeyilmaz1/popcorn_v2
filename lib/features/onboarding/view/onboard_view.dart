@@ -24,6 +24,7 @@ class _OnboardViewState extends State<OnboardView> with OnboardViewMixin {
         alignment: const Alignment(0, 0.9),
         children: [
           PageView(
+             
             onPageChanged: (int index) => currentPage.value = index,
             controller: onboardingController,
             children: onboardingPages,

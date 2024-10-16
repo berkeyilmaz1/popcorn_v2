@@ -28,7 +28,8 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
     return BlocProvider(
       create: (context) => homeCubit,
       child: Scaffold(
-        appBar: AppBar(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar( 
           actions: [
             IconButton(
               icon: const Icon(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:popcorn_v2/features/splash/view/splash_view.dart';
 import 'package:popcorn_v2/product/initialize/theme/product_colors.dart'; 
 import 'package:popcorn_v2/product/utils/constants/product_constants.dart';
+import 'package:popcorn_v2/product/widgets/widget_sizes.dart';
 
 final class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -18,6 +19,7 @@ final class MainApp extends StatelessWidget {
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.transparent,
+          elevation: WidgetSizes.spacingZero,
         ),
         scaffoldBackgroundColor: ProductColors.backgroundColor,
         tabBarTheme: const TabBarTheme(

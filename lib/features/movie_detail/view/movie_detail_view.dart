@@ -16,8 +16,8 @@ import 'package:popcorn_v2/product/widgets/page/page_padding.dart';
 import 'package:popcorn_v2/product/widgets/widget_sizes.dart';
 
 part '../widgets/movie_detail_bottom_app_bar.dart';
-part '../widgets/movie_info_footer.dart';
-part '../widgets/movie_info_header.dart';
+part '../widgets/movie_information.dart';
+part '../widgets/movie_background.dart';
 part '../widgets/movie_poster_and_rating.dart';
 part '../widgets/movie_rating.dart';
 
@@ -40,13 +40,12 @@ class _MovieDetailViewState extends State<MovieDetailView>
       child: BlocProvider(
         create: (context) => homecubit,
         child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.transparent, // Şeffaf AppBar
+          appBar: AppBar( 
 
             leading: IconButton(
               icon: const Icon(Icons.arrow_back, color: Colors.white),
               onPressed: () {
-                Navigator.of(context).pop(); // Geri butonu
+                Navigator.of(context).pop(); 
               },
             ),
             actions: [
@@ -60,7 +59,7 @@ class _MovieDetailViewState extends State<MovieDetailView>
             ],
           ),
           extendBodyBehindAppBar: true,
-          bottomNavigationBar: const MovieDetailBottomAppBarr(),
+          bottomNavigationBar: const MovieDetailBottomAppBar(),
           body: SingleChildScrollView(
             child: Column(
               children: [
