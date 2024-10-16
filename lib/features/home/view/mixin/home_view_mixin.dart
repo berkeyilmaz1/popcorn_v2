@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:popcorn_v2/features/home/cubit/home_cubit.dart';
 import 'package:popcorn_v2/features/home/view/home_view.dart';
+import 'package:popcorn_v2/features/movie_detail/view/movie_detail_view.dart';
 import 'package:popcorn_v2/product/base/base_state.dart';
+import 'package:popcorn_v2/product/initialize/service/model/movie_model.dart';
 import 'package:popcorn_v2/product/initialize/service/movie_service.dart';
 
 mixin HomeViewMixin on State<HomeView>, BaseState<HomeView> {
@@ -26,5 +28,16 @@ mixin HomeViewMixin on State<HomeView>, BaseState<HomeView> {
     await _homeCubit.getUpcomingMovies();
     await _homeCubit.getNowPlayingMovies();
     await _homeCubit.getPopularsFirstImage();
+  }
+
+  void navigateToDetail(BuildContext context, Movie movie) {
+    Navigator.push(
+      context,
+      MaterialPageRoute<MovieDetailView>(
+        builder: (context) => MovieDetailView(
+          movie: movie,
+        ),
+      ),
+    );
   }
 }

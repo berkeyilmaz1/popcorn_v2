@@ -34,7 +34,12 @@
       "noMovies": "No movies found",
       "noMoviesDescription": "We couldn't find any movies matching your search criteria. Please try again.",
       "noMoviesButton": "Try Again"
-    
+    },
+    "detail":{
+      "overview": "• Overview",
+      "cast": "• Cast",
+      "images":"• Images",
+      "buyTicket":"But Ticket Now"
     }
   }
   

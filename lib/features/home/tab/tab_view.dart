@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:popcorn_v2/features/home/tab/enum/tab_enums.dart';
 import 'package:popcorn_v2/features/home/view/home_view.dart';
-import 'package:popcorn_v2/product/theme/product_colors.dart';
+import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
 
 final class TabView extends StatefulWidget {
   const TabView({super.key});
@@ -36,6 +36,7 @@ class _TabViewState extends State<TabView> {
           ),
         ),
         body: const TabBarView(
+          physics: NeverScrollableScrollPhysics( ),
           children: [
             Placeholder(),
             HomeView(),

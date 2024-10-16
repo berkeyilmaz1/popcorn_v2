@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:popcorn_v2/product/theme/product_colors.dart';
+import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
 
 final class ProductStyles {
   static final instance = ProductStyles();
@@ -12,7 +12,6 @@ final class ProductStyles {
   TextStyle get onboardDescription => const TextStyle(
         color: ProductColors.white,
         fontSize: 16,
-        fontWeight: FontWeight.normal,
       );
 
   TextStyle get onboardSkip => const TextStyle(
@@ -24,6 +23,9 @@ final class ProductStyles {
   TextStyle get orDivider => const TextStyle(
         color: Colors.grey,
         fontSize: 18,
+      );
+  TextStyle get voteCount => const TextStyle(
+        color: Colors.grey,
       );
 
   TextStyle get authButton => const TextStyle(
@@ -37,7 +39,4 @@ final class ProductStyles {
         fontSize: 48,
         fontWeight: FontWeight.bold,
       );
-
-
-   
 }

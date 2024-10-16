@@ -4,9 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:popcorn_v2/features/home/cubit/home_cubit.dart';
 import 'package:popcorn_v2/features/home/cubit/home_state.dart';
 import 'package:popcorn_v2/features/home/view/mixin/home_view_mixin.dart';
+import 'package:popcorn_v2/features/movie_detail/view/movie_detail_view.dart';
 import 'package:popcorn_v2/product/base/base_state.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
-import 'package:popcorn_v2/product/theme/product_colors.dart';
+import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
 import 'package:popcorn_v2/product/widgets/highlight_movie.dart';
 import 'package:popcorn_v2/product/widgets/movie_card.dart';
 import 'package:popcorn_v2/product/widgets/page/page_padding.dart';
@@ -27,7 +28,8 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
     return BlocProvider(
       create: (context) => homeCubit,
       child: Scaffold(
-        appBar: AppBar(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar( 
           actions: [
             IconButton(
               icon: const Icon(
@@ -41,11 +43,14 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
         ),
         body: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
+            final popularMovie = state.popularMovies?.first;
+            if (popularMovie == null) return const SizedBox.shrink();
             return SingleChildScrollView(
               child: Column(
                 children: [
                   ///todo: add other movies
                   HighlightMovie(
+                    onTap: () => navigateToDetail(context, popularMovie),
                     imageUrl: state.highlightMovie?.first.filePath ?? '',
                     movieTitle: state.popularMovies?.first.title ?? '',
                   ),
@@ -56,6 +61,14 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
                       final popularMovie = state.popularMovies?[index];
                       if (state.popularMovies == null) const SizedBox.shrink();
                       return MovieCard(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute<MovieDetailView>(
+                            builder: (context) => MovieDetailView(
+                              movie: popularMovie!,
+                            ),
+                          ),
+                        ),
                         imageUrl: popularMovie?.posterPath,
                         movieTitle: popularMovie?.title,
                       );
@@ -68,6 +81,14 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
                       final topRatedMovie = state.topRatedMovies?[index];
                       if (state.topRatedMovies == null) const SizedBox.shrink();
                       return MovieCard(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute<MovieDetailView>(
+                            builder: (context) => MovieDetailView(
+                              movie: topRatedMovie!,
+                            ),
+                          ),
+                        ),
                         imageUrl: topRatedMovie?.posterPath,
                         movieTitle: topRatedMovie?.title,
                       );
@@ -80,6 +101,14 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
                       final upcomingMovie = state.upcomingMovies?[index];
                       if (state.upcomingMovies == null) const SizedBox.shrink();
                       return MovieCard(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute<MovieDetailView>(
+                            builder: (context) => MovieDetailView(
+                              movie: upcomingMovie!,
+                            ),
+                          ),
+                        ),
                         imageUrl: upcomingMovie?.posterPath,
                         movieTitle: upcomingMovie?.title,
                       );
@@ -91,9 +120,18 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
                     itemBuilder: (context, index) {
                       final nowPlayingMovie = state.nowPlayingMovies?[index];
                       // ignore: lines_longer_than_80_chars
-                      if (state.nowPlayingMovies == null)
+                      if (state.nowPlayingMovies == null) {
                         const SizedBox.shrink();
+                      }
                       return MovieCard(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute<MovieDetailView>(
+                            builder: (context) => MovieDetailView(
+                              movie: nowPlayingMovie!,
+                            ),
+                          ),
+                        ),
                         imageUrl: nowPlayingMovie?.posterPath,
                         movieTitle: nowPlayingMovie?.title,
                       );

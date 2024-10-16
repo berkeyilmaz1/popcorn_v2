@@ -16,16 +16,18 @@ mixin SplashMixin on State<SplashView> {
   Future<void> checkOnboard() async {
     final isOnboardCompleted = await _onboardManager.isOnboardCompleted();
     if (isOnboardCompleted) {
-      await Navigator.of(context).pushReplacement(
+      await Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute<AuthView>(
           builder: (context) => const AuthView(),
         ),
+        (route) => false,
       );
     } else {
-      await Navigator.of(context).pushReplacement(
+      await Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute<OnboardView>(
           builder: (context) => const OnboardView(),
         ),
+        (route) => false,
       );
     }
   }
