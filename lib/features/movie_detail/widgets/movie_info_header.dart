@@ -1,7 +1,7 @@
 part of '../view/movie_detail_view.dart';
 
-final class MovieInfoHeader extends StatelessWidget {
-  const MovieInfoHeader({required this.movie, super.key});
+final class MovieBackground extends StatelessWidget {
+  const MovieBackground({required this.movie, super.key});
   final Movie movie;
   @override
   Widget build(BuildContext context) {
@@ -31,25 +31,6 @@ final class MovieInfoHeader extends StatelessWidget {
               );
             },
           ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconButton(
-              icon: const Icon(
-                Icons.arrow_back,
-                color: ProductColors.white,
-              ),
-              onPressed: () => Navigator.pop(context),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.favorite_border,
-                color: ProductColors.white,
-              ),
-            ),
-          ],
         ),
       ],
     );

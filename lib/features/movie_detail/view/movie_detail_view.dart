@@ -9,13 +9,16 @@ import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/service_paths.dart';
 import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
+import 'package:popcorn_v2/product/utils/border_radius_general.dart';
 import 'package:popcorn_v2/product/utils/constants/product_styles.dart';
 import 'package:popcorn_v2/product/widgets/movie_card.dart';
 import 'package:popcorn_v2/product/widgets/page/page_padding.dart';
 import 'package:popcorn_v2/product/widgets/widget_sizes.dart';
 
+part '../widgets/movie_detail_bottom_app_bar.dart';
 part '../widgets/movie_info_footer.dart';
 part '../widgets/movie_info_header.dart';
+part '../widgets/movie_poster_and_rating.dart';
 part '../widgets/movie_rating.dart';
 
 final class MovieDetailView extends StatefulWidget {
@@ -37,40 +40,38 @@ class _MovieDetailViewState extends State<MovieDetailView>
       child: BlocProvider(
         create: (context) => homecubit,
         child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.transparent, // Şeffaf AppBar
+
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).pop(); // Geri butonu
+              },
+            ),
+            actions: [
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.favorite_border,
+                  color: ProductColors.white,
+                ),
+              ),
+            ],
+          ),
+          extendBodyBehindAppBar: true,
+          bottomNavigationBar: const MovieDetailBottomAppBarr(),
           body: SingleChildScrollView(
             child: Column(
               children: [
                 Stack(
                   clipBehavior: Clip.none,
                   children: [
-                    MovieInfoHeader(movie: widget.movie),
-                    Positioned(
-                      bottom:
-                          -(WidgetSizes.spacingXxl12 + WidgetSizes.spacingL),
-                      left: WidgetSizes.spacingZero,
-                      right: WidgetSizes.spacingZero,
-                      child: Row(
-                        children: [
-                          Expanded(
-                            flex: 2,
-                            child: MovieCard(
-                              imageUrl: widget.movie.posterPath ?? '',
-                            ),
-                          ),
-                          Expanded(
-                            flex: 3,
-                            child: Padding(
-                              padding:
-                                  const PagePadding.horizontal16Symmetric(),
-                              child: MovieRating(movie: widget.movie),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    MovieBackground(movie: widget.movie),
+                    MoviePosterAndRating(widget: widget),
                   ],
                 ),
-                MovieInfoFooter(movie: movie),
+                MovieInformation(movie: movie),
               ],
             ),
           ),

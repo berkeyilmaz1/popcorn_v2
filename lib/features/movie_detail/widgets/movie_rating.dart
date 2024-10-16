@@ -31,13 +31,20 @@ final class MovieRating extends StatelessWidget {
             ),
             Column(
               children: [
-                Text(
-                  movie.voteAverage!.toStringAsFixed(1),
-                  style: ProductStyles.instance.authButton,
-                ),
-                Text(
-                  movie.voteCount.toString(),
-                  style: ProductStyles.instance.orDivider,
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: movie.voteAverage!.toStringAsFixed(1),
+                        style: ProductStyles.instance.authButton,
+                      ),
+                      TextSpan(
+                        text: '/${movie.voteCount}', // İkinci text (voteCount)
+                        style: ProductStyles
+                            .instance.voteCount, // İkinci text için stil
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

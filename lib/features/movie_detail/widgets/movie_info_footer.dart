@@ -1,7 +1,7 @@
 part of '../view/movie_detail_view.dart';
 
-class MovieInfoFooter extends StatelessWidget {
-  const MovieInfoFooter({
+class MovieInformation extends StatelessWidget {
+  const MovieInformation({
     required this.movie,
     super.key,
   });
