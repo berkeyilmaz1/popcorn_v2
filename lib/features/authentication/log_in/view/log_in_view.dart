@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:popcorn_v2/features/home/tab/tab_view.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
 import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
 import 'package:popcorn_v2/product/utils/constants/product_styles.dart';

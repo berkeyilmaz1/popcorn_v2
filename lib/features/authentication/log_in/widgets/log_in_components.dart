@@ -10,7 +10,6 @@ final class LogInComponents extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        
         Text(
           LocaleKeys.auth_logIn,
           style: ProductStyles.instance.appTitle,
@@ -29,7 +28,14 @@ final class LogInComponents extends StatelessWidget {
         CustomElevatedButton(
           buttonText: LocaleKeys.auth_logIn,
           backgroundColor: ProductColors.purple,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute<TabView>(
+                builder: (context) => const TabView(),
+              ),
+              (route) => false,
+            );
+          },
           buttonTextStyle: ProductStyles.instance.authButton,
         ),
         TextButton(
