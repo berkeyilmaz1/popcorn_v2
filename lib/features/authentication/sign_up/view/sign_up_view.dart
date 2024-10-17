@@ -26,7 +26,6 @@ class _SignUpViewState extends State<SignUpView> {
         alignment: Alignment.center,
         children: [
           BlackPurpleGradient(),
-         
           SignUpComponents(),
         ],
       ),

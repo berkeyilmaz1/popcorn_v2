@@ -1,7 +1,7 @@
-part of '../view/sign_up_view.dart';
+part of '../view/log_in_view.dart';
 
-final class SignUpComponents extends StatelessWidget {
-  const SignUpComponents({
+final class LogInComponents extends StatelessWidget {
+  const LogInComponents({
     super.key,
   });
 
@@ -11,7 +11,7 @@ final class SignUpComponents extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          LocaleKeys.auth_signUp,
+          LocaleKeys.auth_logIn,
           style: ProductStyles.instance.appTitle,
         ).tr(),
         const SizedBox(
@@ -26,26 +26,20 @@ final class SignUpComponents extends StatelessWidget {
           labelText: LocaleKeys.auth_password,
         ),
         CustomElevatedButton(
-          buttonText: LocaleKeys.auth_signUp,
+          buttonText: LocaleKeys.auth_logIn,
           backgroundColor: ProductColors.purple,
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute<VerificationView>(
-                builder: (context) => const VerificationView(),
-              ),
-            );
-          },
+          onPressed: () {},
           buttonTextStyle: ProductStyles.instance.authButton,
         ),
         TextButton(
           onPressed: () {},
           child: RichText(
             text: TextSpan(
-              text: LocaleKeys.auth_haveAnAcc.tr(),
+              text: LocaleKeys.auth_dontHaveAnAcc.tr(),
               style: ProductStyles.instance.haveAnAcc,
               children: <TextSpan>[
                 TextSpan(
-                  text: LocaleKeys.auth_logIn.tr(),
+                  text: LocaleKeys.auth_signUp.tr(),
                   style: ProductStyles.instance.haveAnAcc.copyWith(
                     color: ProductColors.purple,
                   ),
