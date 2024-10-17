@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:popcorn_v2/core/onboard_manager/onboard_manager.dart';
-import 'package:popcorn_v2/features/authentication/view/auth_view.dart';
+import 'package:popcorn_v2/features/authentication/auth/view/auth_view.dart';
 import 'package:popcorn_v2/features/onboarding/view/onboard_view.dart';
 import 'package:popcorn_v2/features/splash/view/splash_view.dart';
 
