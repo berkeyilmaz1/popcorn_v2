@@ -21,8 +21,22 @@ final class SignUpView extends StatefulWidget {
 class _SignUpViewState extends State<SignUpView> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Stack(
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: WidgetSizes.spacingZero,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: ProductColors.white,
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
+      body: const Stack(
         alignment: Alignment.center,
         children: [
           BlackPurpleGradient(),

@@ -10,6 +10,7 @@ final class LogInComponents extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        
         Text(
           LocaleKeys.auth_logIn,
           style: ProductStyles.instance.appTitle,
