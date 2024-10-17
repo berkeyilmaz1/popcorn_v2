@@ -39,4 +39,9 @@ final class ProductStyles {
         fontSize: 48,
         fontWeight: FontWeight.bold,
       );
+
+  TextStyle get haveAnAcc => const TextStyle(
+        color: ProductColors.white,
+        fontWeight: FontWeight.normal,
+      );
 }
