@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:popcorn_v2/features/home/tab/tab_view.dart';
+import 'package:popcorn_v2/features/authentication/log_in/view/mixin/log_in_view_mixin.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
 import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
 import 'package:popcorn_v2/product/utils/constants/product_styles.dart';
@@ -18,7 +18,7 @@ final class LogInView extends StatefulWidget {
   State<LogInView> createState() => _LogInViewState();
 }
 
-class _LogInViewState extends State<LogInView> {
+class _LogInViewState extends State<LogInView> with LogInViewMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,11 +36,17 @@ class _LogInViewState extends State<LogInView> {
           },
         ),
       ),
-      body: const Stack(
+      body: Stack(
         alignment: Alignment.center,
         children: [
-          BlackPurpleGradient(),
-          LogInComponents(),
+          const BlackPurpleGradient(),
+          LogInComponents(
+            buttonOnPressed: () {
+              logIn(emailController.text, passwordController.text);
+            },
+            emailController: emailController,
+            passwordController: passwordController,
+          ),
         ],
       ),
     );

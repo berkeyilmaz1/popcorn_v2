@@ -2,8 +2,14 @@ part of '../view/log_in_view.dart';
 
 final class LogInComponents extends StatelessWidget {
   const LogInComponents({
+    required this.emailController,
+    required this.passwordController,
+    required this.buttonOnPressed,
     super.key,
   });
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  final VoidCallback buttonOnPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -17,25 +23,20 @@ final class LogInComponents extends StatelessWidget {
         const SizedBox(
           height: WidgetSizes.spacingXxl12,
         ),
-        const CustomTextField(
+        CustomTextField(
+          controller: emailController,
           keyboardType: TextInputType.text,
           labelText: LocaleKeys.auth_email,
         ),
-        const CustomTextField(
+        CustomTextField(
+          controller: passwordController,
           keyboardType: TextInputType.text,
           labelText: LocaleKeys.auth_password,
         ),
         CustomElevatedButton(
           buttonText: LocaleKeys.auth_logIn,
           backgroundColor: ProductColors.purple,
-          onPressed: () {
-            Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute<TabView>(
-                builder: (context) => const TabView(),
-              ),
-              (route) => false,
-            );
-          },
+          onPressed: buttonOnPressed,
           buttonTextStyle: ProductStyles.instance.authButton,
         ),
         TextButton(
