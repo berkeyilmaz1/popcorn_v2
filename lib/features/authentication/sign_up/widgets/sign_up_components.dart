@@ -2,8 +2,14 @@ part of '../view/sign_up_view.dart';
 
 final class SignUpComponents extends StatelessWidget {
   const SignUpComponents({
+    required this.buttonOnPressed,
+    required this.emailController,
+    required this.passwordController,
     super.key,
   });
+  final VoidCallback buttonOnPressed;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
 
   @override
   Widget build(BuildContext context) {
@@ -17,28 +23,30 @@ final class SignUpComponents extends StatelessWidget {
         const SizedBox(
           height: WidgetSizes.spacingXxl12,
         ),
-        const CustomTextField(
+        CustomTextField(
+          controller: emailController,
           keyboardType: TextInputType.text,
           labelText: LocaleKeys.auth_email,
         ),
-        const CustomTextField(
+        CustomTextField(
+          controller: passwordController,
           keyboardType: TextInputType.text,
           labelText: LocaleKeys.auth_password,
         ),
         CustomElevatedButton(
           buttonText: LocaleKeys.auth_signUp,
           backgroundColor: ProductColors.purple,
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute<VerificationView>(
-                builder: (context) => const VerificationView(),
-              ),
-            );
-          },
+          onPressed: buttonOnPressed,
           buttonTextStyle: ProductStyles.instance.authButton,
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute<LogInView>(
+                builder: (context) => const LogInView(),
+              ),
+            );
+          },
           child: RichText(
             text: TextSpan(
               text: LocaleKeys.auth_haveAnAcc.tr(),

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:popcorn_v2/features/authentication/sign_up/view/verification_view.dart';
+import 'package:popcorn_v2/features/authentication/log_in/view/log_in_view.dart';
+import 'package:popcorn_v2/features/authentication/sign_up/view/mixin/sign_up_view_mixin.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
 import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
 import 'package:popcorn_v2/product/utils/constants/product_styles.dart';
@@ -18,7 +19,7 @@ final class SignUpView extends StatefulWidget {
   State<SignUpView> createState() => _SignUpViewState();
 }
 
-class _SignUpViewState extends State<SignUpView> {
+class _SignUpViewState extends State<SignUpView> with SignUpViewMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,11 +37,17 @@ class _SignUpViewState extends State<SignUpView> {
           },
         ),
       ),
-      body: const Stack(
+      body: Stack(
         alignment: Alignment.center,
         children: [
-          BlackPurpleGradient(),
-          SignUpComponents(),
+          const BlackPurpleGradient(),
+          SignUpComponents(
+            buttonOnPressed: () {
+              signUpAndVerify(emailController.text, passwordController.text);
+            },
+            emailController: emailController,
+            passwordController: passwordController,
+          ),
         ],
       ),
     );

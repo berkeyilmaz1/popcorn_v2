@@ -15,17 +15,30 @@ final class AuthService {
     }
   }
 
-  Future<void> logInWithEmailAndPassword(String email, String password) async {
+  ///TODO FIX THİS
+  Future<bool> logInWithEmailAndPassword(String email, String password) async {
     try {
-      await _auth.signInWithEmailAndPassword(
+      final userCredential = await _auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
 
-      await fetchUserDetails(_auth.currentUser);
+      if (userCredential.user == null) return false;
+
+      await fetchUserDetails(userCredential.user);
+      return true;
     } on FirebaseAuthException catch (e) {
-      print(e.message);
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      } else {
+        print(e.message);
+      }
+    } catch (e) {
+      print('An unknown error occurred.');
     }
+    return false;
   }
 
   Future<void> signOut() async {
@@ -54,6 +67,14 @@ final class AuthService {
     } catch (e) {
       print('Send Email Verification Error: $e');
     }
+  }
+
+  Future<bool> checkEmailVerified() async {
+    var user = _auth.currentUser;
+    if (user == null) return false;
+    await user.reload();
+    user = _auth.currentUser;
+    return user?.emailVerified ?? false;
   }
 
   Future<void> fetchUserDetails(User? user) async {
