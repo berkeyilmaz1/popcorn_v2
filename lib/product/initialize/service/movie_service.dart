@@ -1,4 +1,5 @@
 import 'package:popcorn_v2/core/service/model/base_error_model.dart';
+import 'package:popcorn_v2/product/initialize/service/model/account/favorite_and_watchlist_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_detail_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_images_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_lists_model.dart';
@@ -23,15 +24,12 @@ abstract class IMovieService {
   // Future<List<Cast>?> getMovieCast(String movieId);
   Future<List<Videos>?> getMovieVideos(String movieId);
   Future<List<MovieImages>?> getMovieImages(String movieId);
+  Future<List<Movie>?> getFavoriteMovies();
+  Future<List<Movie>?> getWatchlistMovies();
 }
 
 final class MovieService extends IMovieService {
   MovieService({required super.networkManager});
-
-  // @override
-  // Future<List<Cast>?> getMovieCast(String movieId) {
-  //
-  // }
 
   @override
   Future<MovieDetail?> getMovieDetail(String movieId) async {
@@ -103,5 +101,27 @@ final class MovieService extends IMovieService {
       method: RequestType.GET,
     );
     return response.data?.backdrops;
+  }
+
+  @override
+  Future<List<Movie>?> getFavoriteMovies() async {
+    final response =
+        await _networkManager.send<FavoriteAndWatchlist, FavoriteAndWatchlist>(
+      ServicePaths.allFavoritesPath,
+      parseModel: FavoriteAndWatchlist(),
+      method: RequestType.GET,
+    );
+    return response.data?.results;
+  }
+
+  @override
+  Future<List<Movie>?> getWatchlistMovies() async {
+     final response =
+        await _networkManager.send<FavoriteAndWatchlist, FavoriteAndWatchlist>(
+      ServicePaths.allWatchlistPath,
+      parseModel: FavoriteAndWatchlist(),
+      method: RequestType.GET,
+    );
+    return response.data?.results;
   }
 }
