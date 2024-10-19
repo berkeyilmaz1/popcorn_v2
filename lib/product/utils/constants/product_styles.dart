@@ -26,6 +26,7 @@ final class ProductStyles {
       );
   TextStyle get voteCount => const TextStyle(
         color: Colors.grey,
+        fontSize: 12,
       );
 
   TextStyle get authButton => const TextStyle(
