@@ -4,7 +4,7 @@ import 'package:vexana/vexana.dart';
 
 part 'favorite_request_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 final class FavoriteRequest extends INetworkModel<FavoriteRequest>
     with EquatableMixin {
   FavoriteRequest({

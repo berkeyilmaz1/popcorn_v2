@@ -8,14 +8,14 @@ part of 'favorite_request_model.dart';
 
 FavoriteRequest _$FavoriteRequestFromJson(Map<String, dynamic> json) =>
     FavoriteRequest(
-      mediaType: json['mediaType'] as String?,
-      mediaId: (json['mediaId'] as num?)?.toInt(),
+      mediaType: json['media_type'] as String?,
+      mediaId: (json['media_id'] as num?)?.toInt(),
       favorite: json['favorite'] as bool?,
     );
 
 Map<String, dynamic> _$FavoriteRequestToJson(FavoriteRequest instance) =>
     <String, dynamic>{
-      'mediaType': instance.mediaType,
-      'mediaId': instance.mediaId,
+      'media_type': instance.mediaType,
+      'media_id': instance.mediaId,
       'favorite': instance.favorite,
     };

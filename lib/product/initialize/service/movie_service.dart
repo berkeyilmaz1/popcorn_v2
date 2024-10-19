@@ -1,5 +1,8 @@
 import 'package:popcorn_v2/core/service/model/base_error_model.dart';
+import 'package:popcorn_v2/product/initialize/service/model/account/fav_and_watchlist_response_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/account/favorite_and_watchlist_model.dart';
+import 'package:popcorn_v2/product/initialize/service/model/account/favorite_request_model.dart';
+import 'package:popcorn_v2/product/initialize/service/model/account/watchlist_request_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_detail_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_images_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_lists_model.dart';
@@ -26,6 +29,8 @@ abstract class IMovieService {
   Future<List<MovieImages>?> getMovieImages(String movieId);
   Future<List<Movie>?> getFavoriteMovies();
   Future<List<Movie>?> getWatchlistMovies();
+  Future<FavAndWatchlistResponse?> addToFavorite(FavoriteRequest movie);
+  Future<FavAndWatchlistResponse?> addToWatchlist(WatchlistRequest movie);
 }
 
 final class MovieService extends IMovieService {
@@ -116,12 +121,38 @@ final class MovieService extends IMovieService {
 
   @override
   Future<List<Movie>?> getWatchlistMovies() async {
-     final response =
+    final response =
         await _networkManager.send<FavoriteAndWatchlist, FavoriteAndWatchlist>(
       ServicePaths.allWatchlistPath,
       parseModel: FavoriteAndWatchlist(),
       method: RequestType.GET,
     );
     return response.data?.results;
+  }
+
+  @override
+  Future<FavAndWatchlistResponse?> addToFavorite(FavoriteRequest movie) async {
+    final response = await _networkManager
+        .send<FavAndWatchlistResponse, FavAndWatchlistResponse>(
+      ServicePaths.addToFavoritePath,
+      parseModel: FavAndWatchlistResponse(),
+      method: RequestType.POST,
+      data: movie,
+    );
+    return response.data;
+  }
+
+  @override
+  Future<FavAndWatchlistResponse?> addToWatchlist(
+    WatchlistRequest movie,
+  ) async {
+    final response = await _networkManager
+        .send<FavAndWatchlistResponse, FavAndWatchlistResponse>(
+      ServicePaths.addToWatchlistPath,
+      parseModel: FavAndWatchlistResponse(),
+      method: RequestType.POST,
+      data: movie,
+    );
+    return response.data;
   }
 }

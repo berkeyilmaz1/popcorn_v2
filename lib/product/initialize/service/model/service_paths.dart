@@ -37,4 +37,10 @@ final class ServicePaths {
       'account/$accountId/favorite/movies?api_key=$apiKey&session_id=$sessionId';
   static const allWatchlistPath =
       'account/$accountId/watchlist/movies?api_key=$apiKey&session_id=$sessionId';
+
+  static const addToFavoritePath =
+      'account/$accountId/favorite?api_key=$apiKey&session_id=$sessionId';
+
+  static const addToWatchlistPath =
+      'account/$accountId/watchlist?api_key=$apiKey&session_id=$sessionId';
 }
