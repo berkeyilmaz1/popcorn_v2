@@ -19,6 +19,14 @@ abstract class  LocaleKeys {
   static const auth_or = 'auth.or';
   static const auth_logIn = 'auth.logIn';
   static const auth_signUp = 'auth.signUp';
+  static const auth_verification = 'auth.verification';
+  static const auth_didntreceive = 'auth.didntreceive';
+  static const auth_resendCode = 'auth.resendCode';
+  static const auth_haveAnAcc = 'auth.haveAnAcc';
+  static const auth_dontHaveAnAcc = 'auth.dontHaveAnAcc';
+  static const auth_email = 'auth.email';
+  static const auth_password = 'auth.password';
+  static const auth_verify = 'auth.verify';
   static const auth = 'auth';
   static const home_popularMovies = 'home.popularMovies';
   static const home_nowPlaying = 'home.nowPlaying';

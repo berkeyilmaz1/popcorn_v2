@@ -22,7 +22,15 @@
     "auth":{
       "or": "or",
       "logIn": "Log In",
-      "signUp": "Sign Up"
+      "signUp": "Sign Up",
+      "verification": "Verification",
+      "didntreceive": "Didn't receive the code? ",
+      "resendCode":"Resend Verification Email",
+      "haveAnAcc":"Do you already have an account? ",
+      "dontHaveAnAcc":"Don't you have an account? ",
+      "email": "Email",
+      "password": "Password",
+      "verify": "Verify"
     },
     "home":{
       "popularMovies": "Popular Movies",

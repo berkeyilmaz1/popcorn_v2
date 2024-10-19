@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:popcorn_v2/features/authentication/view/auth_view.dart';
+import 'package:popcorn_v2/features/authentication/auth_home/view/auth_view.dart';
 import 'package:popcorn_v2/features/onboarding/view/mixin/onboard_view_mixin.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
 import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
