@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:popcorn_v2/firebase_options.dart';
-import 'package:popcorn_v2/product/initialize/cache/auth_cache.dart';
+import 'package:popcorn_v2/product/initialize/cache/cache_setup.dart';
 
 final class ApplicationStart {
   const ApplicationStart._();
@@ -13,6 +13,6 @@ final class ApplicationStart {
     );
     await EasyLocalization.ensureInitialized();
 
-    await AuthCache.instance.setup();
+    await CacheSetup.instance.setup();
   }
 }

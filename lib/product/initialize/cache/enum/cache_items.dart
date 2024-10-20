@@ -1,12 +1,22 @@
-import 'package:popcorn_v2/product/initialize/cache/auth_cache.dart';
+import 'package:popcorn_v2/product/initialize/cache/cache_setup.dart';
 
 enum CacheItems {
-  token;
+  token,
+  favorite;
 
-  String? get read => AuthCache.instance.sharedPreferences.getString(name);
+  String? get read => CacheSetup.instance.sharedPreferences.getString(name);
 
   Future<bool> write(String value) =>
-      AuthCache.instance.sharedPreferences.setString(name, value);
+      CacheSetup.instance.sharedPreferences.setString(name, value);
 
-  Future<bool> delete() => AuthCache.instance.sharedPreferences.remove(name);
+  Future<bool> delete() => CacheSetup.instance.sharedPreferences.remove(name);
+
+  Future<bool> writeStringList(List<String> value) =>
+      CacheSetup.instance.sharedPreferences.setStringList(name, value);
+
+  List<String>? get readStringList =>
+      CacheSetup.instance.sharedPreferences.getStringList(name);
+
+  Future<bool> deleteStringList() =>
+      CacheSetup.instance.sharedPreferences.remove(name);
 }
