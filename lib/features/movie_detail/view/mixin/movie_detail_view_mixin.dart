@@ -33,12 +33,9 @@ mixin MovieDetailViewMixin on State<MovieDetailView> {
   }
 
   void setupCubits() {
-    _homecubit = HomeCubit(
-      movieService: MovieService(networkManager: ProductNetworkManage()),
-    );
-    _favoriteCubit = FavoriteCubit(
-      movieService: MovieService(networkManager: ProductNetworkManage()),
-    );
+    final movieService = MovieService(networkManager: ProductNetworkManage());
+    _homecubit = HomeCubit(movieService: movieService);
+    _favoriteCubit = FavoriteCubit(movieService: movieService);
   }
 
   Future<void> fetchImages() async {
