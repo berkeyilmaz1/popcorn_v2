@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:popcorn_v2/features/home/cubit/home_cubit.dart';
 import 'package:popcorn_v2/features/home/cubit/home_state.dart';
 import 'package:popcorn_v2/features/movie_detail/view/mixin/movie_detail_view_mixin.dart';
-import 'package:popcorn_v2/product/initialize/cache/enum/cache_items.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/service_paths.dart';
@@ -49,9 +48,8 @@ class _MovieDetailViewState extends State<MovieDetailView>
               },
             ),
             actions: [
-          
               IconButton(
-                onPressed: () {},
+                onPressed: favoriteLogics,
                 icon: isLiked
                     ? const Icon(
                         Icons.favorite_rounded,

@@ -1,6 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:popcorn_v2/features/favorites/cubit/favorite_state.dart';
 import 'package:popcorn_v2/product/initialize/cache/enum/cache_items.dart';
+import 'package:popcorn_v2/product/initialize/service/model/account/favorite_request_model.dart';
+import 'package:popcorn_v2/product/initialize/service/model/account/watchlist_request_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_model.dart';
 import 'package:popcorn_v2/product/initialize/service/movie_service.dart';
 
@@ -27,7 +29,7 @@ final class FavoriteCubit extends Cubit<FavoriteState> {
           (movie) => movie.id.toString(),
         )
         .toList();
-   
+
     await CacheItems.favorite.writeStringList(favoriteMoviesIdList);
   }
 
@@ -36,6 +38,14 @@ final class FavoriteCubit extends Cubit<FavoriteState> {
 
     if (favoriteMovieIdList == null) return [];
     return favoriteMovieIdList;
+  }
+
+  Future<void> favoriteLogics(FavoriteRequest movie) async {
+    await _movieService.addToFavorite(movie);
+  }
+
+  Future<void> watchlistLogics(WatchlistRequest movie) async {
+    await _movieService.addToWatchlist(movie);
   }
 
   void _changeLoading(bool value) {

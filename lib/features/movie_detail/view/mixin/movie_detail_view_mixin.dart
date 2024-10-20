@@ -3,8 +3,10 @@ import 'package:popcorn_v2/core/service/product_network_manager.dart';
 import 'package:popcorn_v2/features/favorites/cubit/favorite_cubit.dart';
 import 'package:popcorn_v2/features/home/cubit/home_cubit.dart';
 import 'package:popcorn_v2/features/movie_detail/view/movie_detail_view.dart';
+import 'package:popcorn_v2/product/initialize/service/model/account/favorite_request_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_model.dart';
 import 'package:popcorn_v2/product/initialize/service/movie_service.dart';
+import 'package:popcorn_v2/product/utils/constants/product_constants.dart';
 
 mixin MovieDetailViewMixin on State<MovieDetailView> {
   late final Movie _movie;
@@ -41,6 +43,19 @@ mixin MovieDetailViewMixin on State<MovieDetailView> {
 
   Future<void> fetchImages() async {
     await _homecubit.getMovieImages(_movie.id.toString());
+  }
+
+  FavoriteRequest get favoriteRequest => FavoriteRequest(
+        mediaType: ProductConstants.movie,
+        mediaId: _movie.id,
+        favorite: !isLiked,
+      );
+
+  Future<void> favoriteLogics() async {
+    await _favoriteCubit.favoriteLogics(favoriteRequest);
+    setState(() {
+      isLiked = !isLiked;
+    });
   }
 
   Future<void> getFavoriteMovies() async {
