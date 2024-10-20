@@ -43,5 +43,10 @@ abstract class  LocaleKeys {
   static const detail_images = 'detail.images';
   static const detail_buyTicket = 'detail.buyTicket';
   static const detail = 'detail';
+  static const favorites_favorites = 'favorites.favorites';
+  static const favorites_noFavorites = 'favorites.noFavorites';
+  static const favorites_noFavoritesDescription = 'favorites.noFavoritesDescription';
+  static const favorites_discoverMovies = 'favorites.discoverMovies';
+  static const favorites = 'favorites';
 
 }

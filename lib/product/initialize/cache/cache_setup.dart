@@ -1,8 +1,9 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-final class AuthCache {
-  AuthCache._();
-  static AuthCache instance = AuthCache._();
+///This class is responsible for setting up the cache
+final class CacheSetup {
+  CacheSetup._();
+  static CacheSetup instance = CacheSetup._();
 
   Future<void> setup() async {
     sharedPreferences = await SharedPreferences.getInstance();

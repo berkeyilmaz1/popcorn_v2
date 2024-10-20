@@ -2,8 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:popcorn_v2/firebase_options.dart';
-import 'package:popcorn_v2/product/initialize/cache/auth_cache.dart';
+import 'package:popcorn_v2/product/initialize/cache/cache_setup.dart';
 
+///This class is responsible for initializing the application
 final class ApplicationStart {
   const ApplicationStart._();
   static Future<void> init() async {
@@ -13,6 +14,6 @@ final class ApplicationStart {
     );
     await EasyLocalization.ensureInitialized();
 
-    await AuthCache.instance.setup();
+    await CacheSetup.instance.setup();
   }
 }

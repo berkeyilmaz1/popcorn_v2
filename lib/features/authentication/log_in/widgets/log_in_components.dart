@@ -29,6 +29,7 @@ final class LogInComponents extends StatelessWidget {
           labelText: LocaleKeys.auth_email,
         ),
         CustomTextField(
+          obscureText: true,
           controller: passwordController,
           keyboardType: TextInputType.text,
           labelText: LocaleKeys.auth_password,

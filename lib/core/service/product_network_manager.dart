@@ -16,7 +16,7 @@ final class ProductNetworkManage extends NetworkManager<BaseErrorModel> {
             },
           ),
         );
-  static const String _baseUrl = 'https://api.themoviedb.org/3/movie/';
+  static const String _baseUrl = 'https://api.themoviedb.org/3/';
   //contentType will be changed according to the environment
   static const String _contentType = 'application/json';
 }

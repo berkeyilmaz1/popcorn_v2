@@ -12,14 +12,14 @@ import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
 import 'package:popcorn_v2/product/utils/border_radius_general.dart';
 import 'package:popcorn_v2/product/utils/constants/product_styles.dart';
 import 'package:popcorn_v2/product/widgets/movie_card.dart';
+import 'package:popcorn_v2/product/widgets/movie_rating.dart';
 import 'package:popcorn_v2/product/widgets/page/page_padding.dart';
 import 'package:popcorn_v2/product/widgets/widget_sizes.dart';
 
+part '../widgets/movie_background.dart';
 part '../widgets/movie_detail_bottom_app_bar.dart';
 part '../widgets/movie_information.dart';
-part '../widgets/movie_background.dart';
 part '../widgets/movie_poster_and_rating.dart';
-part '../widgets/movie_rating.dart';
 
 final class MovieDetailView extends StatefulWidget {
   const MovieDetailView({
@@ -40,21 +40,25 @@ class _MovieDetailViewState extends State<MovieDetailView>
       child: BlocProvider(
         create: (context) => homecubit,
         child: Scaffold(
-          appBar: AppBar( 
-
+          appBar: AppBar(
             leading: IconButton(
               icon: const Icon(Icons.arrow_back, color: Colors.white),
               onPressed: () {
-                Navigator.of(context).pop(); 
+                Navigator.of(context).pop();
               },
             ),
             actions: [
               IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.favorite_border,
-                  color: ProductColors.white,
-                ),
+                onPressed: favoriteLogics,
+                icon: isLiked
+                    ? const Icon(
+                        Icons.favorite_rounded,
+                        color: Colors.red,
+                      )
+                    : const Icon(
+                        Icons.favorite_border_rounded,
+                        color: Colors.white,
+                      ),
               ),
             ],
           ),
