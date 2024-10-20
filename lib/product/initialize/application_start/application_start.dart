@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:popcorn_v2/firebase_options.dart';
 import 'package:popcorn_v2/product/initialize/cache/cache_setup.dart';
 
+///This class is responsible for initializing the application
 final class ApplicationStart {
   const ApplicationStart._();
   static Future<void> init() async {

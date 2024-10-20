@@ -11,14 +11,14 @@ mixin FavoritesViewMixin on State<FavoritesView>, BaseState<FavoritesView> {
   @override
   void initState() {
     super.initState();
-
     setupCubit();
     fetchFavoriteMovies();
   }
 
   void setupCubit() {
+    final movieService = MovieService(networkManager: networkManager);
     _favoriteCubit = FavoriteCubit(
-      movieService: MovieService(networkManager: networkManager),
+      movieService: movieService,
     );
   }
 

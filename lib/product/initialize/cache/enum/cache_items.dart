@@ -1,5 +1,6 @@
 import 'package:popcorn_v2/product/initialize/cache/cache_setup.dart';
 
+/// Enum for cache items
 enum CacheItems {
   token,
   favorite;
