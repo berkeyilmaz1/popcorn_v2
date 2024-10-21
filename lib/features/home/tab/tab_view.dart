@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:popcorn_v2/features/favorites/view/favorites_view.dart';
 import 'package:popcorn_v2/features/home/tab/enum/tab_enums.dart';
 import 'package:popcorn_v2/features/home/view/home_view.dart';
+import 'package:popcorn_v2/features/search/view/search_view.dart';
 import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
 
 final class TabView extends StatefulWidget {
@@ -41,7 +42,7 @@ class _TabViewState extends State<TabView> {
           children: [
             FavoritesView(),
             HomeView(),
-            Placeholder(),
+            SearchView(),
           ],
         ),
       ),
