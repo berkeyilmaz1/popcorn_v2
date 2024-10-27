@@ -1,12 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:popcorn_v2/features/authentication/auth_home/view/auth_view.dart';
 import 'package:popcorn_v2/features/onboarding/view/mixin/onboard_view_mixin.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
 import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
 import 'package:popcorn_v2/product/utils/constants/product_styles.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+@RoutePage()
 
 /// View for the onboarding pages.
 final class OnboardView extends StatefulWidget {
@@ -24,7 +26,6 @@ class _OnboardViewState extends State<OnboardView> with OnboardViewMixin {
         alignment: const Alignment(0, 0.9),
         children: [
           PageView(
-             
             onPageChanged: (int index) => currentPage.value = index,
             controller: onboardingController,
             children: onboardingPages,
@@ -55,12 +56,8 @@ class _OnboardViewState extends State<OnboardView> with OnboardViewMixin {
                   onPressed: () {
                     if (onboardingController.page ==
                         onboardingPages.length - 1) {
-                      Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute<AuthView>(
-                          builder: (context) => const AuthView(),
-                        ),
-                        (route) => false,
-                      );
+                      navigateToAuth();
+
                       completeOnboarding();
                     }
                     onboardingController.nextPage(

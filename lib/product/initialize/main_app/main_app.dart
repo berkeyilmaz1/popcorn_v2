@@ -1,16 +1,17 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:popcorn_v2/features/splash/view/splash_view.dart';
+import 'package:popcorn_v2/product/initialize/router/app_router.dart';
 import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
 import 'package:popcorn_v2/product/utils/constants/product_constants.dart';
 import 'package:popcorn_v2/product/widgets/widget_sizes.dart';
 
 final class MainApp extends StatelessWidget {
   const MainApp({super.key});
-
+  static final _appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: _appRouter.config(),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
@@ -26,7 +27,6 @@ final class MainApp extends StatelessWidget {
           labelColor: ProductColors.purple,
         ),
       ),
-      home: const SplashView(),
     );
   }
 }

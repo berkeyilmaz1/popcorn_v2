@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:popcorn_v2/features/splash/view/mixin/splash_mixin.dart';
 import 'package:popcorn_v2/product/utils/constants/asset_constants.dart';
 
+@RoutePage()
 final class SplashView extends StatefulWidget {
   const SplashView({super.key});
 

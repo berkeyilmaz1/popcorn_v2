@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:popcorn_v2/features/movie_detail/view/movie_detail_view.dart';
 import 'package:popcorn_v2/features/search/cubit/search_cubit.dart';
 import 'package:popcorn_v2/features/search/cubit/search_state.dart';
 import 'package:popcorn_v2/features/search/view/mixin/search_view_mixin.dart';
@@ -53,12 +52,9 @@ class _SearchViewState extends State<SearchView>
                       return SizedBox(
                         height: WidgetSizes.spacingXxlL12,
                         child: GestureDetector(
-                          onTap: () => Navigator.of(context).push(
-                            MaterialPageRoute<MovieDetailView>(
-                              builder: (context) => MovieDetailView(
-                                movie: state.searchedMovies![index],
-                              ),
-                            ),
+                          onTap: () => navigateToDetail(
+                            context,
+                            state.searchedMovies![index],
                           ),
                           child: Row(
                             children: [

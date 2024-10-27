@@ -1,6 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:popcorn_v2/features/authentication/sign_up/view/sign_up_view.dart';
-import 'package:popcorn_v2/features/authentication/sign_up/view/verification_view.dart';
+import 'package:popcorn_v2/product/initialize/router/app_router.dart';
 import 'package:popcorn_v2/product/initialize/service/auth_service.dart';
 
 mixin SignUpViewMixin on State<SignUpView> {
@@ -19,19 +20,15 @@ mixin SignUpViewMixin on State<SignUpView> {
     setupControllers();
   }
 
-  void navigateToVerify() {
-    Navigator.of(context).push(
-      MaterialPageRoute<VerificationView>(
-        builder: (context) => const VerificationView(),
-      ),
-    );
+  Future<void> navigateToVerify() async {
+    await context.router.replaceAll([const VerificationRoute()]);
   }
 
   Future<void> signUpAndVerify(String email, String password) async {
     try {
       await _authService.signUpWithEmailAndPassword(email, password);
       await _authService.sendEmailVerification();
-      navigateToVerify();
+      await navigateToVerify();
     } catch (e) {
       print(e);
     }

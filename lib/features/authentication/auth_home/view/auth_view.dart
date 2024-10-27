@@ -1,9 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:popcorn_v2/features/authentication/log_in/view/log_in_view.dart';
-import 'package:popcorn_v2/features/authentication/sign_up/view/sign_up_view.dart';
-import 'package:popcorn_v2/features/home/tab/tab_view.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
+import 'package:popcorn_v2/product/initialize/router/app_router.dart';
 import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
 import 'package:popcorn_v2/product/utils/constants/product_constants.dart';
 import 'package:popcorn_v2/product/utils/constants/product_styles.dart';
@@ -13,6 +12,7 @@ import 'package:popcorn_v2/product/widgets/widget_sizes.dart';
 
 part '../widgets/or_divider.dart';
 
+@RoutePage()
 final class AuthView extends StatefulWidget {
   const AuthView({super.key});
 
@@ -50,12 +50,8 @@ class _AuthViewState extends State<AuthView> {
               CustomElevatedButton(
                 backgroundColor: ProductColors.purple,
                 buttonText: LocaleKeys.auth_logIn,
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute<TabView>(
-                      builder: (context) => const LogInView(),
-                    ),
-                  );
+                onPressed: () async {
+                  await context.router.push<bool>(const LogInRoute());
                 },
                 buttonTextStyle: ProductStyles.instance.authButton,
               ),
@@ -64,11 +60,7 @@ class _AuthViewState extends State<AuthView> {
                 backgroundColor: ProductColors.purple,
                 buttonText: LocaleKeys.auth_signUp,
                 onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute<TabView>(
-                      builder: (context) => const SignUpView(),
-                    ),
-                  );
+                  context.router.push(const SignUpRoute());
                 },
                 buttonTextStyle: ProductStyles.instance.authButton,
               ),
