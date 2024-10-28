@@ -7,6 +7,7 @@ import 'package:popcorn_v2/product/initialize/service/model/movie_detail_model.d
 import 'package:popcorn_v2/product/initialize/service/model/movie_images_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_lists_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_model.dart';
+import 'package:popcorn_v2/product/initialize/service/model/movie_service_query.dart';
 import 'package:popcorn_v2/product/initialize/service/model/search_response_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/service_paths.dart';
 import 'package:popcorn_v2/product/initialize/service/model/trailer_and_videos_model.dart';
@@ -165,7 +166,12 @@ final class MovieService extends IMovieService {
       parseModel: SearchResponse(),
       method: RequestType.GET,
       //use enums
-      queryParameters: {'query': query},
+      queryParameters: Map.fromEntries([
+        MovieServiceQuery.makeQuery(
+          query: MovieServiceQuery.query,
+          value: query,
+        ),
+      ]),
     );
 
     return response.data?.results;

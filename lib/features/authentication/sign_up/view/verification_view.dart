@@ -3,7 +3,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:popcorn_v2/features/authentication/sign_up/view/mixin/verification_view_mixin.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
-import 'package:popcorn_v2/product/initialize/router/app_router.dart';
 import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
 import 'package:popcorn_v2/product/utils/constants/product_styles.dart';
 import 'package:popcorn_v2/product/widgets/black_purple_gradient.dart';
@@ -37,9 +36,7 @@ class _VerificationViewState extends State<VerificationView>
               ElevatedButton(
                 onPressed: () async {
                   final isUserVerified = await checkUserVerified();
-                  if (isUserVerified == true) {
-                    await context.router.replaceAll([const AuthRoute()]);
-                  }
+                  if (isUserVerified == true) await pushToAuth();
                 },
                 child: const Text('go'),
               ),

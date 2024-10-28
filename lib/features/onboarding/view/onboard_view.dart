@@ -8,9 +8,8 @@ import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
 import 'package:popcorn_v2/product/utils/constants/product_styles.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-@RoutePage()
-
 /// View for the onboarding pages.
+@RoutePage()
 final class OnboardView extends StatefulWidget {
   const OnboardView({super.key});
 

@@ -7,10 +7,13 @@ import 'package:popcorn_v2/features/search/view/mixin/search_view_mixin.dart';
 import 'package:popcorn_v2/features/search/widget/search_field.dart';
 import 'package:popcorn_v2/product/base/base_state.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
+import 'package:popcorn_v2/product/initialize/service/model/movie_model.dart';
 import 'package:popcorn_v2/product/utils/constants/product_styles.dart';
 import 'package:popcorn_v2/product/widgets/movie_card.dart';
 import 'package:popcorn_v2/product/widgets/movie_rating.dart';
 import 'package:popcorn_v2/product/widgets/widget_sizes.dart';
+
+part '../widget/movie_info.dart';
 
 final class SearchView extends StatefulWidget {
   const SearchView({super.key});
@@ -49,31 +52,13 @@ class _SearchViewState extends State<SearchView>
                       if (state.searchedMovies == null) {
                         return const CircularProgressIndicator();
                       }
-                      return SizedBox(
-                        height: WidgetSizes.spacingXxlL12,
-                        child: GestureDetector(
-                          onTap: () => navigateToDetail(
-                            context,
-                            state.searchedMovies![index],
-                          ),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: MovieCard(
-                                  imageUrl:
-                                      state.searchedMovies?[index].posterPath,
-                                ),
-                              ),
-                              Expanded(
-                                flex: 2,
-                                child: MovieRating(
-                                  movie: state.searchedMovies![index],
-                                  showRating: false,
-                                ),
-                              ),
-                            ],
-                          ),
+                      return MovieInfo(
+                        onTap: () => navigateToDetail(
+                          context,
+                          state.searchedMovies![index],
                         ),
+                        imageUrl: state.searchedMovies?[index].posterPath,
+                        movie: state.searchedMovies![index],
                       );
                     },
                   ),

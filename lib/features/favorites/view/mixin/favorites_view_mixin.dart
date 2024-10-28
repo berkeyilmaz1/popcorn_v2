@@ -10,6 +10,7 @@ import 'package:popcorn_v2/product/initialize/service/movie_service.dart';
 mixin FavoritesViewMixin on State<FavoritesView>, BaseState<FavoritesView> {
   late final FavoriteCubit _favoriteCubit;
   FavoriteCubit get favoriteCubit => _favoriteCubit;
+  final flexValue = 2;
 
   @override
   void initState() {

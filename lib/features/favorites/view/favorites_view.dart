@@ -58,7 +58,7 @@ class _FavoritesViewState extends State<FavoritesView>
                           ),
                         ),
                         Expanded(
-                          flex: 2,
+                          flex: flexValue,
                           child: MovieRating(
                             movie: state.favoriteMovies![index],
                             showRating: true,

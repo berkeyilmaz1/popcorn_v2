@@ -17,9 +17,12 @@ mixin SearchViewMixin on State<SearchView>, BaseState<SearchView> {
   @override
   void initState() {
     super.initState();
+    setupCubitAndController();
+  }
+
+  void setupCubitAndController() {
     final movieService = MovieService(networkManager: networkManager);
     _searchCubit = SearchCubit(movieService: movieService);
-
     _searchController = TextEditingController();
   }
 

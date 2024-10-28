@@ -43,4 +43,6 @@ final class ServicePaths {
 
   static const addToWatchlistPath =
       'account/$accountId/watchlist?api_key=$apiKey&session_id=$sessionId';
+
+  static const searchMoviePath = 'search/movie?api_key=$apiKey';
 }

@@ -41,9 +41,7 @@ final class LogInComponents extends StatelessWidget {
           buttonTextStyle: ProductStyles.instance.authButton,
         ),
         TextButton(
-          onPressed: () {
-            context.router.replace(const SignUpRoute());
-          },
+          onPressed: () => context.router.replace(const SignUpRoute()),
           child: RichText(
             text: TextSpan(
               text: LocaleKeys.auth_dontHaveAnAcc.tr(),
