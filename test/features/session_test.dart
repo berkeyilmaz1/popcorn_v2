@@ -3,7 +3,6 @@ import 'package:popcorn_v2/core/service/model/base_error_model.dart';
 import 'package:popcorn_v2/core/service/product_network_manager.dart';
 import 'package:popcorn_v2/product/initialize/config/app_environment.dart';
 import 'package:popcorn_v2/product/initialize/config/env.dart';
-import 'package:popcorn_v2/product/initialize/service/model/session/session_request_model.dart';
 import 'package:popcorn_v2/product/initialize/service/session_service.dart';
 import 'package:vexana/vexana.dart';
 
@@ -33,7 +32,7 @@ void main() {
 
       test('Create session', () async {
         final response = await sessionService.createSession(
-          SessionRequest(requestToken: token),
+          token,
         );
         expect(response, isNotNull);
       });
