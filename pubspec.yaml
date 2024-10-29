@@ -17,6 +17,7 @@ dependencies:
   equatable: ^2.0.5
   kartal: ^4.1.0
   envied: ^0.5.4+1
+  url_launcher: ^6.3.1
 
   #State Management
   flutter_bloc: ^8.1.6
