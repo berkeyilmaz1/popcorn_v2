@@ -1,7 +1,7 @@
 part of '../view/movie_detail_view.dart';
 
-final class MovieDetailBottomAppBar extends StatelessWidget {
-  const MovieDetailBottomAppBar({
+final class BuyTicketNowButton extends StatelessWidget {
+  const BuyTicketNowButton({
     super.key,
   });
 

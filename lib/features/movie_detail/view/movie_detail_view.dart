@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:popcorn_v2/features/home/cubit/home_cubit.dart';
 import 'package:popcorn_v2/features/home/cubit/home_state.dart';
 import 'package:popcorn_v2/features/movie_detail/view/mixin/movie_detail_view_mixin.dart';
+import 'package:popcorn_v2/features/movie_detail/widgets/movie_info_tab.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/service_paths.dart';
@@ -16,8 +17,8 @@ import 'package:popcorn_v2/product/widgets/movie_rating.dart';
 import 'package:popcorn_v2/product/widgets/page/page_padding.dart';
 import 'package:popcorn_v2/product/widgets/widget_sizes.dart';
 
+part '../widgets/buy_ticket_now_button.dart';
 part '../widgets/movie_background.dart';
-part '../widgets/movie_detail_bottom_app_bar.dart';
 part '../widgets/movie_information.dart';
 part '../widgets/movie_poster_and_rating.dart';
 
@@ -40,6 +41,8 @@ class _MovieDetailViewState extends State<MovieDetailView>
       child: BlocProvider(
         create: (context) => homecubit,
         child: Scaffold(
+          extendBodyBehindAppBar: true,
+          bottomNavigationBar: const BuyTicketNowButton(),
           appBar: AppBar(
             leading: IconButton(
               icon: const Icon(Icons.arrow_back, color: Colors.white),
@@ -62,21 +65,22 @@ class _MovieDetailViewState extends State<MovieDetailView>
               ),
             ],
           ),
-          extendBodyBehindAppBar: true,
-          bottomNavigationBar: const MovieDetailBottomAppBar(),
-          body: SingleChildScrollView(
-            child: Column(
-              children: [
-                Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    MovieBackground(movie: widget.movie),
-                    MoviePosterAndRating(widget: widget),
-                  ],
-                ),
-                MovieInformation(movie: movie),
-              ],
-            ),
+          body: Column(
+            children: [
+              Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  MovieBackground(movie: widget.movie),
+                  MoviePosterAndRating(widget: widget),
+                ],
+              ),
+              const SizedBox(
+                height: WidgetSizes.spacingL + WidgetSizes.spacingXxl12,
+              ),
+              MovieInfoTab(
+                movie: widget.movie,
+              ),
+            ],
           ),
         ),
       ),
