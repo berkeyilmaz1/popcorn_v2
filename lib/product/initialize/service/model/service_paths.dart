@@ -5,6 +5,7 @@ final class ServicePaths {
 
   static const moviePrefix = 'movie';
   static const accountPrefix = 'account';
+  static const authPrefix = 'authentication';
 
   static final apiKey = AppEnvironmentItems.apiKey.value;
   static const accountId = 'XXX';
@@ -51,4 +52,8 @@ final class ServicePaths {
       '$accountPrefix/$accountId/watchlist?api_key=$apiKey&session_id=$sessionId';
 
   static final searchMoviePath = 'search/movie?api_key=$apiKey';
+
+  ///MARK: - Session Paths
+  static final requestTokenPath = '$authPrefix/token/new?api_key=$apiKey';
+  static final createSessionPath = '$authPrefix/session/new?api_key=$apiKey';
 }
