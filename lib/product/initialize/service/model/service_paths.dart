@@ -1,16 +1,17 @@
+import 'package:popcorn_v2/product/initialize/config/app_environment.dart';
+
 final class ServicePaths {
   ServicePaths._();
 
-  ///TODO REMOVE APIKEY
-  static const apiKey = 'XXX';
+  static final apiKey = AppEnvironmentItems.apiKey.value;
   static const accountId = 'XXX';
   static const sessionId = 'XXX';
 
   ///MARK: - Movie Paths
-  static const popularMoviesPath = 'movie/popular?api_key=$apiKey';
-  static const topRatedMoviesPath = 'movie/top_rated?api_key=$apiKey';
-  static const upcomingMoviesPath = 'movie/upcoming?api_key=$apiKey';
-  static const nowPlayingMoviesPath = 'movie/now_playing?api_key=$apiKey';
+  static final popularMoviesPath = 'movie/popular?api_key=$apiKey';
+  static final topRatedMoviesPath = 'movie/top_rated?api_key=$apiKey';
+  static final upcomingMoviesPath = 'movie/upcoming?api_key=$apiKey';
+  static final nowPlayingMoviesPath = 'movie/now_playing?api_key=$apiKey';
 
   ///MARK: - Movie Details
   static String movieDetailsPath(String movieId) {
@@ -33,15 +34,15 @@ final class ServicePaths {
   }
 
   ///Mark: Favorite and Watchlist Paths
-  static const allFavoritesPath =
+  static final allFavoritesPath =
       'account/$accountId/favorite/movies?api_key=$apiKey&session_id=$sessionId';
-  static const allWatchlistPath =
+  static final allWatchlistPath =
       'account/$accountId/watchlist/movies?api_key=$apiKey&session_id=$sessionId';
 
-  static const addToFavoritePath =
+  static final addToFavoritePath =
       'account/$accountId/favorite?api_key=$apiKey&session_id=$sessionId';
 
-  static const addToWatchlistPath =
+  static final addToWatchlistPath =
       'account/$accountId/watchlist?api_key=$apiKey&session_id=$sessionId';
 
   static const searchMoviePath = 'search/movie?api_key=$apiKey';

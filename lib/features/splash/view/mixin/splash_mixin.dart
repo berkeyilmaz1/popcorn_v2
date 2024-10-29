@@ -23,10 +23,16 @@ mixin SplashMixin on State<SplashView> {
   Future<void> _checkAuthenticationStatus() async {
     final isSignedIn = await _authService.isUserSignedIn();
 
-    if (isSignedIn) await _navigateToHome();
+    if (isSignedIn) {
+      await _navigateToHome();
+      return;
+    }
 
     final cachedToken = await _authService.getCachedToken();
-    if (cachedToken == null) await _navigateToLogin();
+    if (cachedToken == null) {
+      await _navigateToLogin();
+      return;
+    }
 
     await _navigateToHome();
   }
@@ -43,7 +49,10 @@ mixin SplashMixin on State<SplashView> {
 
   Future<void> checkOnboard() async {
     final isOnboardCompleted = await _onboardManager.isOnboardCompleted();
-    if (isOnboardCompleted) await _checkAuthenticationStatus();
+    if (isOnboardCompleted) {
+      await _checkAuthenticationStatus();
+      return;
+    }
 
     await _navigateToOnboard();
   }

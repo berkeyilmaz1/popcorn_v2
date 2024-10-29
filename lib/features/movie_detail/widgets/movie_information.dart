@@ -7,6 +7,7 @@ class MovieInformation extends StatelessWidget {
   });
 
   final Movie movie;
+  static const maxLines = 6;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class MovieInformation extends StatelessWidget {
           Text(
             movie.overview ?? '',
             style: ProductStyles.instance.onboardDescription,
-            maxLines: WidgetSizes.spacingXSs.truncate(),
+            maxLines: maxLines,
             overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(
