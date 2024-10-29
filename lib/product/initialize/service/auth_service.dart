@@ -15,7 +15,7 @@ final class AuthService {
     }
   }
 
-  ///TODO FIX THİS
+  ///TODO FIX THIS
   Future<bool> logInWithEmailAndPassword(String email, String password) async {
     try {
       final userCredential = await _auth.signInWithEmailAndPassword(

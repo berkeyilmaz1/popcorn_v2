@@ -4,6 +4,7 @@ import 'package:popcorn_v2/core/onboard_manager/onboard_manager.dart';
 import 'package:popcorn_v2/features/onboarding/pages/onboard_pages.dart';
 import 'package:popcorn_v2/features/onboarding/view/onboard_view.dart';
 import 'package:popcorn_v2/product/initialize/router/app_router.dart';
+import 'package:popcorn_v2/product/utils/constants/product_constants.dart';
 
 /// Mixin for [OnboardView] to separate the logic from the view.
 mixin OnboardViewMixin on State<OnboardView> {
@@ -40,15 +41,15 @@ mixin OnboardViewMixin on State<OnboardView> {
   /// Method to animate to the next page.
   void animateToNextPage() {
     _onboardingController.nextPage(
-      ///todo const
-      duration: const Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: ProductConstants.duration),
       curve: Curves.easeIn,
     );
   }
 
-Future<void> navigateToAuth()async {
+  Future<void> navigateToAuth() async {
     await context.router.replaceAll([const AuthRoute()]);
-}
+  }
+
   /// Method to animate to the last page.
   void animateToLastPage() {
     _onboardingController.jumpToPage(

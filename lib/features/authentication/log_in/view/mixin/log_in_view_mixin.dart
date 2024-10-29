@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:popcorn_v2/features/authentication/log_in/view/log_in_view.dart';
-import 'package:popcorn_v2/features/home/tab/tab_view.dart';
 import 'package:popcorn_v2/product/initialize/router/app_router.dart';
 import 'package:popcorn_v2/product/initialize/service/auth_service.dart';
 
@@ -35,8 +34,6 @@ mixin LogInViewMixin on State<LogInView> {
 
   Future<void> _navigateToHome() async {
     await context.router.replaceAll([const TabRoute()]);
-
- 
   }
 
   @override

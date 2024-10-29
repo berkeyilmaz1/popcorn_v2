@@ -26,38 +26,11 @@ class _VerificationViewState extends State<VerificationView>
         alignment: Alignment.center,
         children: [
           const BlackPurpleGradient(),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                LocaleKeys.auth_verification,
-                style: ProductStyles.instance.appTitle,
-              ).tr(),
-              ElevatedButton(
-                onPressed: () async {
-                  final isUserVerified = await checkUserVerified();
-                  if (isUserVerified == true) await pushToAuth();
-                },
-                child: const Text('go'),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: RichText(
-                  text: TextSpan(
-                    text: LocaleKeys.auth_didntreceive.tr(),
-                    style: ProductStyles.instance.haveAnAcc,
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: LocaleKeys.auth_resendCode.tr(),
-                        style: ProductStyles.instance.haveAnAcc.copyWith(
-                          color: ProductColors.purple,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
+          VerificationComponents(
+            onPressed: () async {
+              final isUserVerified = await checkUserVerified();
+              if (isUserVerified == true) await pushToAuth();
+            },
           ),
         ],
       ),

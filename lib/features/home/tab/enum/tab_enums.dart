@@ -1,3 +1,1 @@
-enum TabEnum{
-  favorite,home,ticket
-}
+enum TabEnum { favorite, home, ticket }

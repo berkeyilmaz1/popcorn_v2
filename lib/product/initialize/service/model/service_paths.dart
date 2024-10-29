@@ -41,7 +41,6 @@ final class ServicePaths {
   }
 
   ///Mark: Favorite and Watchlist Paths
-  ///TODO: ACCOUNT ID AND SESSION ID
   static final allFavoritesPath =
       '$accountPrefix/$accountId/favorite/movies?api_key=$apiKey&session_id=$sessionId';
   static final allWatchlistPath =

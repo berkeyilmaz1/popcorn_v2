@@ -18,7 +18,7 @@ final class SearchField extends StatefulWidget {
   final TextEditingController controller;
 
   @override
-  _SearchFieldState createState() => _SearchFieldState();
+  State<SearchField> createState() => _SearchFieldState();
 }
 
 class _SearchFieldState extends State<SearchField> {
@@ -88,4 +88,4 @@ class _SearchFieldState extends State<SearchField> {
   }
 }
 
-///https://github.com/VB10/advanced_search_flutter
+///https://github.com/VB10/advanced_search_flutter 

@@ -33,7 +33,6 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
             return SingleChildScrollView(
               child: Column(
                 children: [
-                  ///todo: add other movies
                   HighlightMovie(
                     onTap: () => navigateToDetail(context, popularMovie),
                     imageUrl: state.highlightMovie?.first.filePath ?? '',

@@ -5,7 +5,8 @@ import 'package:vexana/vexana.dart';
 part 'movie_images_model.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-final class MovieImagesList extends INetworkModel<MovieImagesList> with EquatableMixin {
+final class MovieImagesList extends INetworkModel<MovieImagesList>
+    with EquatableMixin {
   MovieImagesList({
     this.backdrops,
   });
@@ -15,7 +16,8 @@ final class MovieImagesList extends INetworkModel<MovieImagesList> with Equatabl
   final List<MovieImages>? backdrops;
 
   @override
-  MovieImagesList fromJson(Map<String, dynamic> json) => MovieImagesList.fromJson(json);
+  MovieImagesList fromJson(Map<String, dynamic> json) =>
+      MovieImagesList.fromJson(json);
 
   @override
   Map<String, dynamic>? toJson() => _$MovieImagesListToJson(this);
@@ -43,7 +45,8 @@ class MovieImages extends INetworkModel<MovieImages> with EquatableMixin {
     this.width,
   });
 
-  factory MovieImages.fromJson(Map<String, dynamic> json) => _$MovieImagesFromJson(json);
+  factory MovieImages.fromJson(Map<String, dynamic> json) =>
+      _$MovieImagesFromJson(json);
   final double? aspectRatio;
   final int? height;
   final String? filePath;

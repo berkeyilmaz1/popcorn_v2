@@ -4,7 +4,8 @@ import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
 import 'package:popcorn_v2/product/utils/border_radius_general.dart';
 import 'package:popcorn_v2/product/widgets/page/page_padding.dart';
 
-/// CustomTextField is a custom text field widget that can be used to create text fields with a label and hint text.
+/// CustomTextField is a custom text field widget that can be used to 
+/// create text fields with a label and hint text.
 final class CustomTextField extends StatelessWidget {
   const CustomTextField({
     required this.keyboardType,

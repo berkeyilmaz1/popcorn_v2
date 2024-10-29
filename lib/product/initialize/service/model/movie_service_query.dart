@@ -10,5 +10,3 @@ enum MovieServiceQuery {
     return MapEntry(query.name, value);
   }
 }
-
-
