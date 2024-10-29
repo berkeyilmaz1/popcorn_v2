@@ -16,6 +16,7 @@ dependencies:
   #Core
   equatable: ^2.0.5
   kartal: ^4.1.0
+  envied: ^0.5.4+1
 
   #State Management
   flutter_bloc: ^8.1.6
@@ -51,6 +52,7 @@ dev_dependencies:
   very_good_analysis: ^6.0.0
   json_serializable: ^6.8.0
   build_runner: ^2.4.13
+  envied_generator: ^0.5.4+1
 
 flutter:
   uses-material-design: true

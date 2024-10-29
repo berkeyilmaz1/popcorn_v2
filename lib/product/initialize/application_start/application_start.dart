@@ -3,6 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:popcorn_v2/firebase_options.dart';
 import 'package:popcorn_v2/product/initialize/cache/cache_setup.dart';
+import 'package:popcorn_v2/product/initialize/config/app_environment.dart';
+import 'package:popcorn_v2/product/initialize/config/env.dart';
 
 ///This class is responsible for initializing the application
 final class ApplicationStart {
@@ -15,5 +17,7 @@ final class ApplicationStart {
     await EasyLocalization.ensureInitialized();
 
     await CacheSetup.instance.setup();
+
+    AppEnvironment.setup(Env());
   }
 }
