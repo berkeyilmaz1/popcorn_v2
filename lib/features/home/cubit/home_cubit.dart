@@ -11,6 +11,7 @@ abstract class IHomeCubit {
   Future<void> getMovieVideos(String movieId);
   Future<void> getMovieImages(String movieId);
   Future<void> getPopularsFirstImage();
+  Future<void> getMovieCast(String movieId);
 }
 
 final class HomeCubit extends Cubit<HomeState> implements IHomeCubit {
@@ -89,5 +90,13 @@ final class HomeCubit extends Cubit<HomeState> implements IHomeCubit {
 
   void _changeLoading(bool value) {
     emit(state.copyWith(isLoading: value));
+  }
+
+  @override
+  Future<void> getMovieCast(String movieId) async {
+    _changeLoading(true);
+    final response = await _movieService.getMovieCast(movieId);
+    _changeLoading(false);
+    emit(state.copyWith(movieCast: response));
   }
 }

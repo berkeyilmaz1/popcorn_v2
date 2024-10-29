@@ -37,7 +37,9 @@ mixin SplashMixin on State<SplashView> {
     await _navigateToHome();
   }
 
-  Future<void> _navigateToHome() async {}
+  Future<void> _navigateToHome() async {
+    await context.router.replaceAll([const TabRoute()]);
+  }
 
   Future<void> _navigateToLogin() async {
     await context.router.replaceAll([const AuthRoute()]);

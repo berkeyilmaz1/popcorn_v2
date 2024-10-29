@@ -20,7 +20,6 @@ import 'package:popcorn_v2/product/widgets/widget_sizes.dart';
 
 part '../widgets/buy_ticket_now_button.dart';
 part '../widgets/movie_background.dart';
-part '../widgets/movie_information.dart';
 part '../widgets/movie_poster_and_rating.dart';
 
 @RoutePage()
@@ -39,51 +38,49 @@ class _MovieDetailViewState extends State<MovieDetailView>
     with MovieDetailViewMixin {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: BlocProvider(
-        create: (context) => homecubit,
-        child: Scaffold(
-          extendBodyBehindAppBar: true,
-          bottomNavigationBar: const BuyTicketNowButton(),
-          appBar: AppBar(
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back, color: Colors.white),
-              onPressed: () {
-                context.router.maybePop();
-              },
+    return BlocProvider(
+      create: (context) => homecubit,
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
+        bottomNavigationBar: const BuyTicketNowButton(),
+        appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back, color: Colors.white),
+            onPressed: () {
+              context.router.maybePop();
+            },
+          ),
+          actions: [
+            IconButton(
+              onPressed: favoriteLogics,
+              icon: isLiked
+                  ? const Icon(
+                      Icons.favorite_rounded,
+                      color: Colors.red,
+                    )
+                  : const Icon(
+                      Icons.favorite_border_rounded,
+                      color: Colors.white,
+                    ),
             ),
-            actions: [
-              IconButton(
-                onPressed: favoriteLogics,
-                icon: isLiked
-                    ? const Icon(
-                        Icons.favorite_rounded,
-                        color: Colors.red,
-                      )
-                    : const Icon(
-                        Icons.favorite_border_rounded,
-                        color: Colors.white,
-                      ),
-              ),
-            ],
-          ),
-          body: Column(
-            children: [
-              Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  MovieBackground(movie: widget.movie),
-                  MoviePosterAndRating(widget: widget),
-                ],
-              ),
-              const SizedBox(
-                height: WidgetSizes.spacingL + WidgetSizes.spacingXxl12,
-              ),
-              MovieInfoTab(
-                movie: widget.movie,
-              ),
-            ],
-          ),
+          ],
+        ),
+        body: Column(
+          children: [
+            Stack(
+              clipBehavior: Clip.none,
+              children: [
+                MovieBackground(movie: widget.movie),
+                MoviePosterAndRating(widget: widget),
+              ],
+            ),
+            const SizedBox(
+              height: WidgetSizes.spacingL + WidgetSizes.spacingXxl12,
+            ),
+            MovieInfoTab(
+              movie: widget.movie,
+            ),
+          ],
         ),
       ),
     );

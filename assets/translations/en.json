@@ -44,9 +44,9 @@
       "noMoviesButton": "Try Again"
     },
     "detail":{
-      "overview": "• Overview",
-      "cast": "• Cast",
-      "images":"• Images",
+      "overview": "Overview",
+      "cast": "Cast",
+      "images":"Images",
       "buyTicket":"But Ticket Now"
     },
     "favorites":{
