@@ -3,6 +3,8 @@ import 'package:popcorn_v2/product/initialize/service/model/account/fav_and_watc
 import 'package:popcorn_v2/product/initialize/service/model/account/favorite_and_watchlist_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/account/favorite_request_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/account/watchlist_request_model.dart';
+import 'package:popcorn_v2/product/initialize/service/model/cast/cast_list.dart';
+import 'package:popcorn_v2/product/initialize/service/model/cast/cast_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_detail_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_images_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_lists_model.dart';
@@ -26,7 +28,7 @@ abstract class IMovieService {
   Future<List<Movie>?> getUpcomingMovies();
   Future<List<Movie>?> getNowPlayingMovies();
   Future<MovieDetail?> getMovieDetail(String movieId);
-  // Future<List<Cast>?> getMovieCast(String movieId);
+  Future<List<Cast>?> getMovieCast(String movieId);
   Future<List<Videos>?> getMovieVideos(String movieId);
   Future<List<MovieImages>?> getMovieImages(String movieId);
   Future<List<Movie>?> getFavoriteMovies();
@@ -175,5 +177,16 @@ final class MovieService extends IMovieService {
     );
 
     return response.data?.results;
+  }
+
+  @override
+  Future<List<Cast>?> getMovieCast(String movieId) async {
+    final response = await _networkManager.send<CastList, CastList>(
+      ServicePaths.castPath(movieId),
+      parseModel: CastList(),
+      method: RequestType.GET,
+    );
+
+    return response.data?.cast;
   }
 }
