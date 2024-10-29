@@ -25,7 +25,6 @@ class _FavoritesViewState extends State<FavoritesView>
     return BlocProvider(
       create: (context) => favoriteCubit,
       child: Scaffold(
-        extendBodyBehindAppBar: true,
         appBar: AppBar(
           centerTitle: true,
           title: Text(

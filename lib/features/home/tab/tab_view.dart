@@ -33,7 +33,7 @@ class _TabViewState extends State<TabView> {
                 icon: Icon(Icons.home),
               ),
               Tab(
-                icon: Icon(Icons.bookmark_rounded),
+                icon: Icon(Icons.search),
               ),
             ],
           ),

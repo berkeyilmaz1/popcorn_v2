@@ -6,7 +6,6 @@ import 'package:popcorn_v2/features/home/cubit/home_state.dart';
 import 'package:popcorn_v2/features/home/view/mixin/home_view_mixin.dart';
 import 'package:popcorn_v2/product/base/base_state.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
-import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
 import 'package:popcorn_v2/product/widgets/highlight_movie.dart';
 import 'package:popcorn_v2/product/widgets/movie_card.dart';
 import 'package:popcorn_v2/product/widgets/page/page_padding.dart';
@@ -27,19 +26,6 @@ class _HomeViewState extends State<HomeView> with BaseState, HomeViewMixin {
     return BlocProvider(
       create: (context) => homeCubit,
       child: Scaffold(
-        extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          actions: [
-            IconButton(
-              icon: const Icon(
-                Icons.search,
-                size: WidgetSizes.spacingXxl1,
-                color: ProductColors.white,
-              ),
-              onPressed: () {},
-            ),
-          ],
-        ),
         body: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
             final popularMovie = state.popularMovies?.first;

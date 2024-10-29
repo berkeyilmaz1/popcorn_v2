@@ -41,7 +41,7 @@ abstract class  LocaleKeys {
   static const detail_overview = 'detail.overview';
   static const detail_cast = 'detail.cast';
   static const detail_images = 'detail.images';
-  static const detail_buyTicket = 'detail.buyTicket';
+  static const detail_watchTrailer = 'detail.watchTrailer';
   static const detail = 'detail';
   static const favorites_favorites = 'favorites.favorites';
   static const favorites_noFavorites = 'favorites.noFavorites';
