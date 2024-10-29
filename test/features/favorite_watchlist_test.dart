@@ -13,6 +13,11 @@ void main() {
   late final IMovieService movieService =
       MovieService(networkManager: networkManager);
 
+  test('Search Movie', () async {
+    final response = await movieService.searchMovie('The Dark Knight');
+    expect(response, isNotNull);
+  });
+
   group('Movie Lists Test', () {
     test('Get All Favorites', () async {
       final response = await movieService.getFavoriteMovies();
@@ -33,7 +38,8 @@ void main() {
 
     test('Add To Watchlist', () async {
       final response = await movieService.addToWatchlist(
-          WatchlistRequest(mediaId: 600, watchlist: true, mediaType: 'movie'));
+        WatchlistRequest(mediaId: 600, watchlist: true, mediaType: 'movie'),
+      );
       expect(response, isNotNull);
     });
   });

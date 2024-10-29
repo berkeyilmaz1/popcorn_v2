@@ -26,7 +26,10 @@ final class MoviePosterAndRating extends StatelessWidget {
             flex: 3,
             child: Padding(
               padding: const PagePadding.horizontal16Symmetric(),
-              child: MovieRating(movie: widget.movie),
+              child: MovieRating(
+                movie: widget.movie,
+                showRating: true,
+              ),
             ),
           ),
         ],

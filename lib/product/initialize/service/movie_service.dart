@@ -7,6 +7,8 @@ import 'package:popcorn_v2/product/initialize/service/model/movie_detail_model.d
 import 'package:popcorn_v2/product/initialize/service/model/movie_images_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_lists_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_model.dart';
+import 'package:popcorn_v2/product/initialize/service/model/movie_service_query.dart';
+import 'package:popcorn_v2/product/initialize/service/model/search_response_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/service_paths.dart';
 import 'package:popcorn_v2/product/initialize/service/model/trailer_and_videos_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/videos_model.dart';
@@ -31,6 +33,7 @@ abstract class IMovieService {
   Future<List<Movie>?> getWatchlistMovies();
   Future<FavAndWatchlistResponse?> addToFavorite(FavoriteRequest movie);
   Future<FavAndWatchlistResponse?> addToWatchlist(WatchlistRequest movie);
+  Future<List<Movie>?> searchMovie(String query);
 }
 
 final class MovieService extends IMovieService {
@@ -154,5 +157,23 @@ final class MovieService extends IMovieService {
       data: movie,
     );
     return response.data;
+  }
+
+  @override
+  Future<List<Movie>?> searchMovie(String query) async {
+    final response = await _networkManager.send<SearchResponse, SearchResponse>(
+      ServicePaths.searchMoviePath,
+      parseModel: SearchResponse(),
+      method: RequestType.GET,
+      //use enums
+      queryParameters: Map.fromEntries([
+        MovieServiceQuery.makeQuery(
+          query: MovieServiceQuery.query,
+          value: query,
+        ),
+      ]),
+    );
+
+    return response.data?.results;
   }
 }

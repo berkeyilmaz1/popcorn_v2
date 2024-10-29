@@ -1,9 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:popcorn_v2/core/onboard_manager/onboard_manager.dart';
-import 'package:popcorn_v2/features/authentication/auth_home/view/auth_view.dart';
-import 'package:popcorn_v2/features/home/tab/tab_view.dart';
-import 'package:popcorn_v2/features/onboarding/view/onboard_view.dart';
 import 'package:popcorn_v2/features/splash/view/splash_view.dart';
+import 'package:popcorn_v2/product/initialize/router/app_router.dart';
 import 'package:popcorn_v2/product/initialize/service/auth_service.dart';
 
 mixin SplashMixin on State<SplashView> {
@@ -38,31 +37,14 @@ mixin SplashMixin on State<SplashView> {
     await _navigateToHome();
   }
 
-  Future<void> _navigateToHome() async {
-    await Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute<TabView>(
-        builder: (context) => const TabView(),
-      ),
-      (route) => false,
-    );
-  }
+  Future<void> _navigateToHome() async {}
 
   Future<void> _navigateToLogin() async {
-    await Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute<AuthView>(
-        builder: (context) => const AuthView(),
-      ),
-      (route) => false,
-    );
+    await context.router.replaceAll([const AuthRoute()]);
   }
 
   Future<void> _navigateToOnboard() async {
-    await Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute<OnboardView>(
-        builder: (context) => const OnboardView(),
-      ),
-      (route) => false,
-    );
+    await context.router.replaceAll([const OnboardRoute()]);
   }
 
   Future<void> checkOnboard() async {

@@ -41,11 +41,7 @@ final class SignUpComponents extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute<LogInView>(
-                builder: (context) => const LogInView(),
-              ),
-            );
+            context.router.replace(const LogInRoute());
           },
           child: RichText(
             text: TextSpan(

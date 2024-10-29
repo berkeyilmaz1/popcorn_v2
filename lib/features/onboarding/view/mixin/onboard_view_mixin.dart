@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:popcorn_v2/core/onboard_manager/onboard_manager.dart';
-import 'package:popcorn_v2/features/onboarding/view/onboard_view.dart';
 import 'package:popcorn_v2/features/onboarding/pages/onboard_pages.dart';
+import 'package:popcorn_v2/features/onboarding/view/onboard_view.dart';
+import 'package:popcorn_v2/product/initialize/router/app_router.dart';
 
 /// Mixin for [OnboardView] to separate the logic from the view.
 mixin OnboardViewMixin on State<OnboardView> {
@@ -44,6 +46,9 @@ mixin OnboardViewMixin on State<OnboardView> {
     );
   }
 
+Future<void> navigateToAuth()async {
+    await context.router.replaceAll([const AuthRoute()]);
+}
   /// Method to animate to the last page.
   void animateToLastPage() {
     _onboardingController.jumpToPage(

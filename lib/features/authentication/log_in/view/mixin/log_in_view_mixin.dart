@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:popcorn_v2/features/authentication/log_in/view/log_in_view.dart';
 import 'package:popcorn_v2/features/home/tab/tab_view.dart';
+import 'package:popcorn_v2/product/initialize/router/app_router.dart';
 import 'package:popcorn_v2/product/initialize/service/auth_service.dart';
 
 mixin LogInViewMixin on State<LogInView> {
@@ -18,7 +20,8 @@ mixin LogInViewMixin on State<LogInView> {
     _authService = AuthService();
     setupControllers();
   }
-///FİX THİS
+
+  ///FİX THİS
   Future<void> logIn(String email, String password) async {
     try {
       final userCredential =
@@ -31,12 +34,9 @@ mixin LogInViewMixin on State<LogInView> {
   }
 
   Future<void> _navigateToHome() async {
-    await Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute<TabView>(
-        builder: (context) => const TabView(),
-      ),
-      (route) => false,
-    );
+    await context.router.replaceAll([const TabRoute()]);
+
+ 
   }
 
   @override

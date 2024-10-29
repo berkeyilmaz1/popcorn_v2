@@ -43,18 +43,29 @@ class _FavoritesViewState extends State<FavoritesView>
                 }
                 return SizedBox(
                   height: WidgetSizes.spacingXxlL12,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: MovieCard(
-                          imageUrl: state.favoriteMovies?[index].posterPath,
+                  child: GestureDetector(
+                    onTap: () async {
+                      await navigateToDetail(
+                        context,
+                        state.favoriteMovies![index],
+                      );
+                    },
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: MovieCard(
+                            imageUrl: state.favoriteMovies?[index].posterPath,
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        flex: 2,
-                        child: MovieRating(movie: state.favoriteMovies![index]),
-                      ),
-                    ],
+                        Expanded(
+                          flex: flexValue,
+                          child: MovieRating(
+                            movie: state.favoriteMovies![index],
+                            showRating: true,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },

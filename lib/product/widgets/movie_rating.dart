@@ -6,10 +6,12 @@ import 'package:popcorn_v2/product/widgets/widget_sizes.dart';
 final class MovieRating extends StatelessWidget {
   const MovieRating({
     required this.movie,
+    required this.showRating,
     super.key,
   });
 
   final Movie movie;
+  final bool showRating;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ final class MovieRating extends StatelessWidget {
           style: ProductStyles.instance.onboardDescription,
         ),
         const SizedBox(height: WidgetSizes.spacingXs),
-        if (movie.voteAverage != null && movie.voteCount != null)
+        if (movie.voteAverage != null && movie.voteCount != null && showRating)
           Row(
             children: [
               const Icon(

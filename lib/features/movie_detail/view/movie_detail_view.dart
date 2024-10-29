@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,7 @@ part '../widgets/movie_background.dart';
 part '../widgets/movie_information.dart';
 part '../widgets/movie_poster_and_rating.dart';
 
+@RoutePage()
 final class MovieDetailView extends StatefulWidget {
   const MovieDetailView({
     required this.movie,
@@ -47,7 +49,7 @@ class _MovieDetailViewState extends State<MovieDetailView>
             leading: IconButton(
               icon: const Icon(Icons.arrow_back, color: Colors.white),
               onPressed: () {
-                Navigator.of(context).pop();
+                context.router.maybePop();
               },
             ),
             actions: [
