@@ -28,7 +28,6 @@ final class MovieBackground extends StatelessWidget {
                   images?.filePath ?? '',
                 ),
               ),
-              // MoviePosterAndRating(widget: widget),
             ],
           );
         },
