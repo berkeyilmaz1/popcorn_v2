@@ -12,7 +12,7 @@ mixin SignUpViewMixin on State<SignUpView> {
   TextEditingController get emailController => _emailController;
   late final TextEditingController _passwordController;
   TextEditingController get passwordController => _passwordController;
-
+  bool isObscure = true;
   @override
   void initState() {
     super.initState();
@@ -32,6 +32,12 @@ mixin SignUpViewMixin on State<SignUpView> {
     } catch (e) {
       print(e);
     }
+  }
+
+  void changeObscure() {
+    setState(() {
+      isObscure = !isObscure;
+    });
   }
 
   @override

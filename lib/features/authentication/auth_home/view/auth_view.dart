@@ -39,30 +39,33 @@ class _AuthViewState extends State<AuthView> with AuthViewMixin {
               ),
             ),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Spacer(),
-              Text(
-                ProductConstants.appName,
-                style: ProductStyles.instance.appTitle,
-              ),
-              const Spacer(),
-              CustomElevatedButton(
-                backgroundColor: ProductColors.purple,
-                buttonText: LocaleKeys.auth_logIn,
-                onPressed: () => pushToPages(const LogInRoute()),
-                buttonTextStyle: ProductStyles.instance.authButton,
-              ),
-              const OrDivider(),
-              CustomElevatedButton(
-                backgroundColor: ProductColors.purple,
-                buttonText: LocaleKeys.auth_signUp,
-                onPressed: () => pushToPages(const SignUpRoute()),
-                buttonTextStyle: ProductStyles.instance.authButton,
-              ),
-              const SizedBox(height: WidgetSizes.spacingL),
-            ],
+          Padding(
+            padding: const PagePadding.all(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Spacer(),
+                Text(
+                  ProductConstants.appName,
+                  style: ProductStyles.instance.appTitle,
+                ),
+                const Spacer(),
+                CustomElevatedButton(
+                  backgroundColor: ProductColors.purple,
+                  buttonText: LocaleKeys.auth_logIn,
+                  onPressed: () => pushToPages(const LogInRoute()),
+                  buttonTextStyle: ProductStyles.instance.authButton,
+                ),
+                const OrDivider(),
+                CustomElevatedButton(
+                  backgroundColor: ProductColors.purple,
+                  buttonText: LocaleKeys.auth_signUp,
+                  onPressed: () => pushToPages(const SignUpRoute()),
+                  buttonTextStyle: ProductStyles.instance.authButton,
+                ),
+                const SizedBox(height: WidgetSizes.spacingL),
+              ],
+            ),
           ),
         ],
       ),

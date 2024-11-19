@@ -43,6 +43,22 @@ class _LogInViewState extends State<LogInView> with LogInViewMixin {
         children: [
           const BlackPurpleGradient(),
           LogInComponents(
+            obscureText: isObscure,
+            suffixIcon: isObscure
+                ? IconButton(
+                    onPressed: changeObscure,
+                    icon: const Icon(
+                      Icons.visibility_off_outlined,
+                      color: ProductColors.white,
+                    ),
+                  )
+                : IconButton(
+                    onPressed: changeObscure,
+                    icon: const Icon(
+                      Icons.visibility_outlined,
+                      color: ProductColors.white,
+                    ),
+                  ),
             buttonOnPressed: () {
               logIn(emailController.text, passwordController.text);
             },

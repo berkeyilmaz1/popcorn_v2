@@ -12,7 +12,7 @@ mixin LogInViewMixin on State<LogInView> {
   TextEditingController get emailController => _emailController;
   late final TextEditingController _passwordController;
   TextEditingController get passwordController => _passwordController;
-
+  bool isObscure = true;
   @override
   void initState() {
     super.initState();
@@ -30,6 +30,12 @@ mixin LogInViewMixin on State<LogInView> {
     } catch (e) {
       print(e);
     }
+  }
+
+  void changeObscure() {
+    setState(() {
+      isObscure = !isObscure;
+    });
   }
 
   Future<void> navigateToResetPassword() async {

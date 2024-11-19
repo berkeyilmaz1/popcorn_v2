@@ -9,6 +9,7 @@ import 'package:popcorn_v2/product/utils/constants/product_styles.dart';
 import 'package:popcorn_v2/product/widgets/black_purple_gradient.dart';
 import 'package:popcorn_v2/product/widgets/custom_elevated_button.dart';
 import 'package:popcorn_v2/product/widgets/custom_text_field.dart';
+import 'package:popcorn_v2/product/widgets/page/page_padding.dart';
 import 'package:popcorn_v2/product/widgets/widget_sizes.dart';
 
 part '../widgets/sign_up_components.dart';
@@ -42,6 +43,22 @@ class _SignUpViewState extends State<SignUpView> with SignUpViewMixin {
         children: [
           const BlackPurpleGradient(),
           SignUpComponents(
+            obscureText: isObscure,
+            suffixIcon: isObscure
+                ? IconButton(
+                    onPressed: changeObscure,
+                    icon: const Icon(
+                      Icons.visibility_off_outlined,
+                      color: ProductColors.white,
+                    ),
+                  )
+                : IconButton(
+                    onPressed: changeObscure,
+                    icon: const Icon(
+                      Icons.visibility_outlined,
+                      color: ProductColors.white,
+                    ),
+                  ),
             buttonOnPressed: () {
               signUpAndVerify(emailController.text, passwordController.text);
             },

@@ -5,12 +5,13 @@ final class LogInComponents extends StatelessWidget {
     required this.emailController,
     required this.passwordController,
     required this.buttonOnPressed,
-    super.key,
+    super.key, this.suffixIcon, required this.obscureText,
   });
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final VoidCallback buttonOnPressed;
-
+  final Widget? suffixIcon;
+  final bool obscureText;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,13 +26,17 @@ final class LogInComponents extends StatelessWidget {
           const SizedBox(
             height: WidgetSizes.spacingXxl12,
           ),
-          CustomTextField(
-            controller: emailController,
-            keyboardType: TextInputType.text,
-            labelText: LocaleKeys.auth_email,
+          Padding(
+            padding: const PagePadding.onlyBottomNormal(),
+            child: CustomTextField(
+              controller: emailController,
+              keyboardType: TextInputType.text,
+              labelText: LocaleKeys.auth_email,
+            ),
           ),
           CustomTextField(
-            obscureText: true,
+            obscureText: obscureText,
+            suffixIcon: suffixIcon,
             controller: passwordController,
             keyboardType: TextInputType.text,
             labelText: LocaleKeys.auth_password,
