@@ -4,7 +4,7 @@ import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
 import 'package:popcorn_v2/product/utils/border_radius_general.dart';
 import 'package:popcorn_v2/product/widgets/page/page_padding.dart';
 
-/// CustomTextField is a custom text field widget that can be used to 
+/// CustomTextField is a custom text field widget that can be used to
 /// create text fields with a label and hint text.
 final class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -26,7 +26,7 @@ final class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const PagePadding.all(),
+      padding: const PagePadding.onlyBottomNormal(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -9,12 +9,11 @@ import 'package:popcorn_v2/product/widgets/page/page_padding.dart';
 final class SearchField extends StatefulWidget {
   const SearchField({
     required this.onChanged,
-    required this.onClear,
     required this.controller,
     super.key,
   });
   final void Function(String value) onChanged;
-  final VoidCallback onClear;
+
   final TextEditingController controller;
 
   @override
@@ -25,18 +24,22 @@ class _SearchFieldState extends State<SearchField> {
   late CancelableOperation<void> cancellableOperation;
   final _delayTime = const Duration(milliseconds: 300);
 
+  bool _isTextEmpty = true;
   @override
   void initState() {
     super.initState();
     _start();
   }
 
+  @override
+  void dispose() {
+    cancellableOperation.cancel();
+    super.dispose();
+  }
+
   void _start() {
     cancellableOperation = CancelableOperation.fromFuture(
       Future.delayed(_delayTime),
-      onCancel: () {
-        print('Canceled');
-      },
     );
   }
 
@@ -45,6 +48,9 @@ class _SearchFieldState extends State<SearchField> {
     _start();
     cancellableOperation.value.whenComplete(() {
       widget.onChanged(value);
+    });
+    setState(() {
+      _isTextEmpty = value.isEmpty;
     });
   }
 
@@ -61,13 +67,18 @@ class _SearchFieldState extends State<SearchField> {
             Icons.search,
             color: ProductColors.white,
           ),
-          suffixIcon: IconButton(
-            icon: const Icon(
-              Icons.clear,
-              color: ProductColors.white,
-            ),
-            onPressed: widget.onClear,
-          ),
+          suffixIcon: _isTextEmpty
+              ? null
+              : IconButton(
+                  icon: const Icon(
+                    Icons.clear,
+                    color: ProductColors.white,
+                  ),
+                  onPressed: () {
+                    widget.controller.clear();
+                    _onItemChanged('');
+                  },
+                ),
           floatingLabelBehavior: FloatingLabelBehavior.auto,
           floatingLabelStyle: const TextStyle(
             color: ProductColors.white,
@@ -87,5 +98,6 @@ class _SearchFieldState extends State<SearchField> {
     );
   }
 }
+
 
 ///https://github.com/VB10/advanced_search_flutter 

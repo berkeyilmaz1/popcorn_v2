@@ -43,7 +43,6 @@ class _SearchViewState extends State<SearchView>
                 SearchField(
                   controller: searchController,
                   onChanged: searchMovies,
-                  onClear: searchController.clear,
                 ),
                 Expanded(
                   child: ListView.builder(

@@ -27,6 +27,8 @@ abstract class  LocaleKeys {
   static const auth_email = 'auth.email';
   static const auth_password = 'auth.password';
   static const auth_verify = 'auth.verify';
+  static const auth_forgetPassword = 'auth.forgetPassword';
+  static const auth_resetPassword = 'auth.resetPassword';
   static const auth = 'auth';
   static const home_popularMovies = 'home.popularMovies';
   static const home_nowPlaying = 'home.nowPlaying';
