@@ -74,7 +74,7 @@ class _MovieDetailViewState extends State<MovieDetailView>
               clipBehavior: Clip.none,
               children: [
                 MovieBackground(movie: widget.movie),
-                MoviePosterAndRating(widget: widget),
+                MoviePosterAndRating(movie: widget.movie),
               ],
             ),
             const SizedBox(

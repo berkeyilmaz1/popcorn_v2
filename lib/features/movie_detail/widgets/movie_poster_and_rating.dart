@@ -2,11 +2,11 @@ part of '../view/movie_detail_view.dart';
 
 final class MoviePosterAndRating extends StatelessWidget {
   const MoviePosterAndRating({
-    required this.widget,
+    required this.movie,
     super.key,
   });
 
-  final MovieDetailView widget;
+  final Movie movie;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ final class MoviePosterAndRating extends StatelessWidget {
           Expanded(
             flex: 2,
             child: MovieCard(
-              imageUrl: widget.movie.posterPath ?? '',
+              imageUrl: movie.posterPath ?? '',
             ),
           ),
           Expanded(
@@ -27,7 +27,7 @@ final class MoviePosterAndRating extends StatelessWidget {
             child: Padding(
               padding: const PagePadding.horizontal16Symmetric(),
               child: MovieRating(
-                movie: widget.movie,
+                movie: movie,
                 showRating: true,
               ),
             ),
