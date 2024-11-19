@@ -30,7 +30,9 @@
       "dontHaveAnAcc":"Don't you have an account? ",
       "email": "Email",
       "password": "Password",
-      "verify": "Verify"
+      "verify": "Verify",
+      "forgetPassword": "Forgot Password?",
+      "resetPassword": "Reset Password"
     },
     "home":{
       "popularMovies": "Popular Movies",

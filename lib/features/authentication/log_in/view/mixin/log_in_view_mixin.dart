@@ -32,6 +32,10 @@ mixin LogInViewMixin on State<LogInView> {
     }
   }
 
+  Future<void> navigateToResetPassword() async {
+    await context.router.push(const ResetPasswordRoute());
+  }
+
   Future<void> _navigateToHome() async {
     await context.router.replaceAll([const TabRoute()]);
   }

@@ -1,9 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:popcorn_v2/features/authentication/log_in/view/mixin/log_in_view_mixin.dart';
+import 'package:popcorn_v2/features/authentication/reset_password/view/mixin/reset_password_mixin.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
-import 'package:popcorn_v2/product/initialize/router/app_router.dart';
 import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
 import 'package:popcorn_v2/product/utils/constants/product_styles.dart';
 import 'package:popcorn_v2/product/widgets/black_purple_gradient.dart';
@@ -12,17 +11,16 @@ import 'package:popcorn_v2/product/widgets/custom_text_field.dart';
 import 'package:popcorn_v2/product/widgets/page/page_padding.dart';
 import 'package:popcorn_v2/product/widgets/widget_sizes.dart';
 
-part '../widgets/log_in_components.dart';
-
 @RoutePage()
-final class LogInView extends StatefulWidget {
-  const LogInView({super.key});
+final class ResetPasswordView extends StatefulWidget {
+  const ResetPasswordView({super.key});
 
   @override
-  State<LogInView> createState() => _LogInViewState();
+  State<ResetPasswordView> createState() => _ResetPasswordViewState();
 }
 
-class _LogInViewState extends State<LogInView> with LogInViewMixin {
+class _ResetPasswordViewState extends State<ResetPasswordView>
+    with ResetPasswordMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,12 +40,28 @@ class _LogInViewState extends State<LogInView> with LogInViewMixin {
         alignment: Alignment.center,
         children: [
           const BlackPurpleGradient(),
-          LogInComponents(
-            buttonOnPressed: () {
-              logIn(emailController.text, passwordController.text);
-            },
-            emailController: emailController,
-            passwordController: passwordController,
+          Padding(
+            padding: const PagePadding.all(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  LocaleKeys.auth_resetPassword,
+                  style: ProductStyles.instance.onboardTitle,
+                ).tr(),
+                CustomTextField(
+                  controller: emailController,
+                  keyboardType: TextInputType.text,
+                  labelText: LocaleKeys.auth_email,
+                ),
+                CustomElevatedButton(
+                  buttonText: LocaleKeys.auth_resetPassword,
+                  backgroundColor: ProductColors.purple,
+                  onPressed: () => resetButtonPressed(emailController.text),
+                  buttonTextStyle: ProductStyles.instance.authButton,
+                ),
+              ],
+            ),
           ),
         ],
       ),

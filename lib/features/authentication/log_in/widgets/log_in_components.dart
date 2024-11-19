@@ -13,51 +13,67 @@ final class LogInComponents extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          LocaleKeys.auth_logIn,
-          style: ProductStyles.instance.appTitle,
-        ).tr(),
-        const SizedBox(
-          height: WidgetSizes.spacingXxl12,
-        ),
-        CustomTextField(
-          controller: emailController,
-          keyboardType: TextInputType.text,
-          labelText: LocaleKeys.auth_email,
-        ),
-        CustomTextField(
-          obscureText: true,
-          controller: passwordController,
-          keyboardType: TextInputType.text,
-          labelText: LocaleKeys.auth_password,
-        ),
-        CustomElevatedButton(
-          buttonText: LocaleKeys.auth_logIn,
-          backgroundColor: ProductColors.purple,
-          onPressed: buttonOnPressed,
-          buttonTextStyle: ProductStyles.instance.authButton,
-        ),
-        TextButton(
-          onPressed: () => context.router.replace(const SignUpRoute()),
-          child: RichText(
-            text: TextSpan(
-              text: LocaleKeys.auth_dontHaveAnAcc.tr(),
-              style: ProductStyles.instance.haveAnAcc,
-              children: <TextSpan>[
-                TextSpan(
-                  text: LocaleKeys.auth_signUp.tr(),
-                  style: ProductStyles.instance.haveAnAcc.copyWith(
-                    color: ProductColors.purple,
-                  ),
+    return Padding(
+      padding: const PagePadding.all(),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            LocaleKeys.auth_logIn,
+            style: ProductStyles.instance.appTitle,
+          ).tr(),
+          const SizedBox(
+            height: WidgetSizes.spacingXxl12,
+          ),
+          CustomTextField(
+            controller: emailController,
+            keyboardType: TextInputType.text,
+            labelText: LocaleKeys.auth_email,
+          ),
+          CustomTextField(
+            obscureText: true,
+            controller: passwordController,
+            keyboardType: TextInputType.text,
+            labelText: LocaleKeys.auth_password,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              TextButton(
+                onPressed: () =>
+                    context.router.push(const ResetPasswordRoute()),
+                child: Text(
+                  LocaleKeys.auth_forgetPassword.tr(),
+                  style: ProductStyles.instance.haveAnAcc,
                 ),
-              ],
+              ),
+            ],
+          ),
+          CustomElevatedButton(
+            buttonText: LocaleKeys.auth_logIn,
+            backgroundColor: ProductColors.purple,
+            onPressed: buttonOnPressed,
+            buttonTextStyle: ProductStyles.instance.authButton,
+          ),
+          TextButton(
+            onPressed: () => context.router.replace(const SignUpRoute()),
+            child: RichText(
+              text: TextSpan(
+                text: LocaleKeys.auth_dontHaveAnAcc.tr(),
+                style: ProductStyles.instance.haveAnAcc,
+                children: <TextSpan>[
+                  TextSpan(
+                    text: LocaleKeys.auth_signUp.tr(),
+                    style: ProductStyles.instance.haveAnAcc.copyWith(
+                      color: ProductColors.purple,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
