@@ -21,7 +21,10 @@ part 'tab_views/movie_overview.dart';
 enum DetailTabItems { overview, cast, images }
 
 final class MovieInfoTab extends StatefulWidget {
-  const MovieInfoTab({required this.movie, super.key});
+  const MovieInfoTab({
+    required this.movie,
+    super.key,
+  });
   final Movie movie;
 
   @override
