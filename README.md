@@ -2,6 +2,8 @@
 <img src="https://github.com/user-attachments/assets/b7757ee1-30cc-41f1-be63-0ced504b88a3" height="200">   <br>
 **This project is a movie application developed using Flutter. The app allows users to discover popular movies, create favorite lists, and view detailed information about each movie.** <br>
 
+## App
+![popcorn gif](https://github.com/user-attachments/assets/5843b893-7b89-4f13-82f8-f4c3893d6d87)
 
 ## Features
 * **Movie List:** View popular, most-watched, and top-rated movies.<br>
@@ -27,7 +29,7 @@
 * **Localization** <br>
   * [Easy Localization](https://pub.dev/packages/easy_localization)<br>
 * **Caching**<br>
-  * [Shared Preferences](https://pub.dev/packages/shared_preferences).<br>
+  * [Shared Preferences](https://pub.dev/packages/shared_preferences)<br>
   * [Cached Network Image](https://pub.dev/packages/cached_network_image)<br>
 
 * **Navigation**<br>
@@ -43,4 +45,4 @@
   
 
 
-## App
+
