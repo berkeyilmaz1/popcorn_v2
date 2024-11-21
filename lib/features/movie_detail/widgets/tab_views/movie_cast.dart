@@ -19,7 +19,8 @@ final class MovieCast extends StatelessWidget {
                   Padding(
                     padding: const PagePadding.all(),
                     child: SizedBox(
-                      width: WidgetSizes.spacingXxl12 + WidgetSizes.spacingXxl1,
+                      width:
+                          WidgetSizes.spacingHundred + WidgetSizes.spacingXxl1,
                       child: MovieCard(
                         imageUrl:
                             ServicePaths.posterPath(cast?.profilePath ?? ''),

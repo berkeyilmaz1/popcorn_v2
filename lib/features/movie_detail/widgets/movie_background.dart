@@ -14,7 +14,7 @@ final class MovieBackground extends StatelessWidget {
             ProductColors.black,
             Colors.transparent,
           ],
-          stops: [WidgetSizes.spacingZero, WidgetSizes.spacingXSSs],
+          stops: [WidgetSizes.spacingZero, WidgetSizes.spacingXxxSmall],
         ).createShader(bounds);
       },
       blendMode: BlendMode.dstIn,

@@ -26,8 +26,8 @@ class _OnboardDiscoverState extends State<OnboardDiscover> {
             children: [
               SvgPicture.asset(
                 AssetConstants.onboardDiscover,
-                width: WidgetSizes.spacingXxlL13,
-                height: WidgetSizes.spacingXxlL13,
+                width: WidgetSizes.spacingXXHundred,
+                height: WidgetSizes.spacingXXHundred,
               ),
               Padding(
                 padding: const PagePadding.vertical18Symmetric(),
@@ -69,8 +69,8 @@ class _OnboardFollowState extends State<OnboardFollow> {
             children: [
               SvgPicture.asset(
                 AssetConstants.onboardFollow,
-                width: WidgetSizes.spacingXxlL13,
-                height: WidgetSizes.spacingXxlL13,
+                width: WidgetSizes.spacingXXHundred,
+                height: WidgetSizes.spacingXXHundred,
               ),
               Padding(
                 padding: const PagePadding.vertical18Symmetric(),
@@ -112,8 +112,8 @@ class _OnboardCastState extends State<OnboardCast> {
             children: [
               SvgPicture.asset(
                 AssetConstants.onboardCast,
-                width: WidgetSizes.spacingXxlL13,
-                height: WidgetSizes.spacingXxlL13,
+                width: WidgetSizes.spacingXXHundred,
+                height: WidgetSizes.spacingXXHundred,
               ),
               Padding(
                 padding: const PagePadding.vertical18Symmetric(),
@@ -155,8 +155,8 @@ class _OnboardSuggestionState extends State<OnboardSuggestion> {
             children: [
               SvgPicture.asset(
                 AssetConstants.onboardSuggestion,
-                width: WidgetSizes.spacingXxlL13,
-                height: WidgetSizes.spacingXxlL13,
+                width: WidgetSizes.spacingXXHundred,
+                height: WidgetSizes.spacingXXHundred,
               ),
               Padding(
                 padding: const PagePadding.vertical18Symmetric(),

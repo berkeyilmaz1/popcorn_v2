@@ -8,7 +8,7 @@ final class OrDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const PagePadding.horizontalHighSymmetric(),
+      padding: const PagePadding.horizontal40Symmetric(),
       child: Row(
         children: <Widget>[
           const Expanded(

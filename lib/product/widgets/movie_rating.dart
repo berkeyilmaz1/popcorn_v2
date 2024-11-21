@@ -28,7 +28,7 @@ final class MovieRating extends StatelessWidget {
           movie.releaseDate ?? '',
           style: ProductStyles.instance.onboardDescription,
         ),
-        const SizedBox(height: WidgetSizes.spacingXs),
+        const SizedBox(height: WidgetSizes.spacingXxSmall),
         if (movie.voteAverage != null && movie.voteCount != null && showRating)
           Row(
             children: [

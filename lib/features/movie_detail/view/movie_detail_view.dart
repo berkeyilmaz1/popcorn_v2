@@ -78,7 +78,7 @@ class _MovieDetailViewState extends State<MovieDetailView>
               ],
             ),
             const SizedBox(
-              height: WidgetSizes.spacingL + WidgetSizes.spacingXxl12,
+              height: WidgetSizes.spacingL + WidgetSizes.spacingHundred,
             ),
             MovieInfoTab(
               movie: widget.movie,

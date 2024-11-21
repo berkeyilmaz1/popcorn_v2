@@ -90,7 +90,7 @@ class _SearchFieldState extends State<SearchField> {
           fillColor: Colors.grey.withOpacity(0.5),
           filled: true,
           border: const OutlineInputBorder(
-            borderRadius: BorderRadiusGeneral.allLow(),
+            borderRadius: BorderRadiusGeneral.all(),
           ),
         ),
         cursorColor: ProductColors.purple,

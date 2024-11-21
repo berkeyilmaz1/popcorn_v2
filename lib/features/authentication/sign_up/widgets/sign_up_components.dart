@@ -27,7 +27,7 @@ final class SignUpComponents extends StatelessWidget {
             style: ProductStyles.instance.appTitle,
           ).tr(),
           const SizedBox(
-            height: WidgetSizes.spacingXxl12,
+            height: WidgetSizes.spacingHundred,
           ),
           CustomTextField(
             controller: emailController,
@@ -35,7 +35,7 @@ final class SignUpComponents extends StatelessWidget {
             labelText: LocaleKeys.auth_email,
           ),
           Padding(
-            padding: const PagePadding.verticalNormalSymmetric(),
+            padding: const PagePadding.horizontal24Symmetric(),
             child: CustomTextField(
               suffixIcon: suffixIcon,
               obscureText: obscureText,

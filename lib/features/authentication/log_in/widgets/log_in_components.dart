@@ -5,7 +5,9 @@ final class LogInComponents extends StatelessWidget {
     required this.emailController,
     required this.passwordController,
     required this.buttonOnPressed,
-    super.key, this.suffixIcon, required this.obscureText,
+    required this.obscureText,
+    super.key,
+    this.suffixIcon,
   });
   final TextEditingController emailController;
   final TextEditingController passwordController;
@@ -24,7 +26,7 @@ final class LogInComponents extends StatelessWidget {
             style: ProductStyles.instance.appTitle,
           ).tr(),
           const SizedBox(
-            height: WidgetSizes.spacingXxl12,
+            height: WidgetSizes.spacingHundred,
           ),
           Padding(
             padding: const PagePadding.onlyBottomNormal(),

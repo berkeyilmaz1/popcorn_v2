@@ -4,7 +4,7 @@ final class MovieAndTitle extends StatelessWidget {
   const MovieAndTitle({
     required this.itemCount,
     required this.itemBuilder,
-      this.title,
+    this.title,
     super.key,
   });
   final int itemCount;
@@ -26,7 +26,7 @@ final class MovieAndTitle extends StatelessWidget {
             ).tr(),
           ),
           SizedBox(
-            height: WidgetSizes.spacingXxlL13,
+            height: WidgetSizes.spacingXXHundred,
             child: ListView.builder(
               itemCount: itemCount,
               scrollDirection: Axis.horizontal,

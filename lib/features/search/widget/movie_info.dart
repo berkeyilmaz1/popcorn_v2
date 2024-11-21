@@ -13,7 +13,7 @@ final class MovieInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: WidgetSizes.spacingXxlL12,
+      height: WidgetSizes.spacingXHundred,
       child: GestureDetector(
         onTap: onTap,
         child: Row(

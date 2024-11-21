@@ -30,7 +30,7 @@ final class DismissibleMovieCard extends StatelessWidget {
         ),
       ),
       child: SizedBox(
-        height: WidgetSizes.spacingXxlL12,
+        height: WidgetSizes.spacingXHundred,
         child: GestureDetector(
           onTap: onTapped,
           child: Row(

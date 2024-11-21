@@ -26,7 +26,7 @@ class _WatchTrailerButtonState extends State<WatchTrailerButton>
               style: ElevatedButton.styleFrom(
                 backgroundColor: ProductColors.purple,
                 shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadiusGeneral.allLow(),
+                  borderRadius: BorderRadiusGeneral.all(),
                 ),
               ),
               onPressed: () async => fetchTrailer(),

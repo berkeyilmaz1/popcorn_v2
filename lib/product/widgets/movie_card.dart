@@ -20,7 +20,7 @@ final class MovieCard extends StatelessWidget {
     return Padding(
       padding: const PagePadding.allLow(),
       child: ClipRRect(
-        borderRadius: const BorderRadiusGeneral.allLow(),
+        borderRadius: const BorderRadiusGeneral.all(),
         child: GestureDetector(
           onTap: onTap,
           child: CachedNetworkImage(

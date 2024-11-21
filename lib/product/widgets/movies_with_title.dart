@@ -26,7 +26,7 @@ final class MoviesWithTitle extends StatelessWidget {
             style: const TextStyle(color: Colors.white),
           ).tr(),
           SizedBox(
-            height: WidgetSizes.spacingXxlL13,
+            height: WidgetSizes.spacingXXHundred,
             child: ListView.builder(
               itemCount: itemCount,
               scrollDirection: Axis.horizontal,

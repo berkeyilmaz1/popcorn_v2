@@ -51,7 +51,7 @@ class _MovieInfoTabState extends State<MovieInfoTab>
           BlocProvider(
             create: (context) => homeCubit,
             child: SizedBox(
-              height: WidgetSizes.spacingXxlL14,
+              height: WidgetSizes.spacingXXXHundred,
               child: TabBarView(
                 children: [
                   MovieOverview(movie: widget.movie),

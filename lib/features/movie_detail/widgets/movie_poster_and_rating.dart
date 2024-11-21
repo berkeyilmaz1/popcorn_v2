@@ -11,7 +11,7 @@ final class MoviePosterAndRating extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: -(WidgetSizes.spacingXxl12 + WidgetSizes.spacingL),
+      bottom: -(WidgetSizes.spacingHundred + WidgetSizes.spacingL),
       left: WidgetSizes.spacingZero,
       right: WidgetSizes.spacingZero,
       child: Row(
