@@ -49,6 +49,7 @@ abstract class  LocaleKeys {
   static const favorites_noFavorites = 'favorites.noFavorites';
   static const favorites_noFavoritesDescription = 'favorites.noFavoritesDescription';
   static const favorites_discoverMovies = 'favorites.discoverMovies';
+  static const favorites_removeFromFavorites = 'favorites.removeFromFavorites';
   static const favorites = 'favorites';
   static const search_search = 'search.search';
   static const search_noResults = 'search.noResults';

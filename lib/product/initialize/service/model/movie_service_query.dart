@@ -1,6 +1,7 @@
 /// This class is used to make queries for the shop service
 enum MovieServiceQuery {
-  query;
+  query,
+  session_id;
 
   /// This method is used to make a query with name
   static MapEntry<String, String> makeQuery({

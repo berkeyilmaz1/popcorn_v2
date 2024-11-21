@@ -1,38 +1,35 @@
-import 'package:popcorn_v2/product/initialize/config/app_environment.dart';
-
 final class ServicePaths {
   ServicePaths._();
 
   static const moviePrefix = 'movie';
   static const accountPrefix = 'account';
 
-  static final apiKey = AppEnvironmentItems.apiKey.value;
+  ///todo implement account - session logic.
   static const accountId = 'XXX';
   static const sessionId = 'XXX';
 
   ///MARK: - Movie Paths
-  static final popularMoviesPath = '$moviePrefix/popular?api_key=$apiKey';
-  static final topRatedMoviesPath = '$moviePrefix/top_rated?api_key=$apiKey';
-  static final upcomingMoviesPath = '$moviePrefix/upcoming?api_key=$apiKey';
-  static final nowPlayingMoviesPath =
-      '$moviePrefix/now_playing?api_key=$apiKey';
+  static const popularMoviesPath = '$moviePrefix/popular';
+  static const topRatedMoviesPath = '$moviePrefix/top_rated';
+  static const upcomingMoviesPath = '$moviePrefix/upcoming';
+  static const nowPlayingMoviesPath = '$moviePrefix/now_playing';
   static String castPath(String movieId) {
-    return '$moviePrefix/$movieId/credits?api_key=$apiKey';
+    return '$moviePrefix/$movieId/credits';
   }
 
   ///MARK: - Movie Details
   static String movieDetailsPath(String movieId) {
-    return '$moviePrefix/$movieId?api_key=$apiKey';
+    return '$moviePrefix/$movieId';
   }
 
   ///MARK: - Movie Videos
   static String movieVideosPath(String movieId) {
-    return '$moviePrefix/$movieId/videos?api_key=$apiKey';
+    return '$moviePrefix/$movieId/videos';
   }
 
   ///MARK: - Movie Images
   static String movieImagesPath(String movieId) {
-    return '$moviePrefix/$movieId/images?api_key=$apiKey';
+    return '$moviePrefix/$movieId/images';
   }
 
   ///MARK: - Image Paths
@@ -41,14 +38,10 @@ final class ServicePaths {
   }
 
   ///Mark: Favorite and Watchlist Paths
-  static final allFavoritesPath =
-      '$accountPrefix/$accountId/favorite/movies?api_key=$apiKey&session_id=$sessionId';
-  static final allWatchlistPath =
-      '$accountPrefix/$accountId/watchlist/movies?api_key=$apiKey&session_id=$sessionId';
-  static final addToFavoritePath =
-      '$accountPrefix/$accountId/favorite?api_key=$apiKey&session_id=$sessionId';
-  static final addToWatchlistPath =
-      '$accountPrefix/$accountId/watchlist?api_key=$apiKey&session_id=$sessionId';
+  static const allFavoritesPath = '$accountPrefix/$accountId/favorite/movies';
+  static const allWatchlistPath = '$accountPrefix/$accountId/watchlist/movies';
+  static const addToFavoritePath = '$accountPrefix/$accountId/favorite';
+  static const addToWatchlistPath = '$accountPrefix/$accountId/watchlist';
 
-  static final searchMoviePath = 'search/movie?api_key=$apiKey';
+  static const searchMoviePath = 'search/movie';
 }

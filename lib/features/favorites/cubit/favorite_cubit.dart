@@ -5,6 +5,7 @@ import 'package:popcorn_v2/product/initialize/service/model/account/favorite_req
 import 'package:popcorn_v2/product/initialize/service/model/account/watchlist_request_model.dart';
 import 'package:popcorn_v2/product/initialize/service/model/movie_model.dart';
 import 'package:popcorn_v2/product/initialize/service/movie_service.dart';
+import 'package:popcorn_v2/product/utils/constants/product_constants.dart';
 
 abstract class IFavoriteCubit {
   Future<void> getFavoriteMovies();
@@ -31,6 +32,20 @@ final class FavoriteCubit extends Cubit<FavoriteState>
     await writeFavoriteMovieIdsToCache(response);
     _changeLoading(false);
     emit(state.copyWith(favoriteMovies: response));
+  }
+
+  @override
+  Future<void> removeFromFavorite(int mediaId) async {
+    _changeLoading(true);
+    await _movieService.removeFromFavorite(
+      FavoriteRequest(
+        favorite: false,
+        mediaType: ProductConstants.movie,
+        mediaId: mediaId,
+      ),
+    );
+    ///todo add caching logic
+    _changeLoading(false);
   }
 
   @override
