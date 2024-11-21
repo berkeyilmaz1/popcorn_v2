@@ -35,6 +35,7 @@ abstract class IMovieService {
   Future<List<Movie>?> getWatchlistMovies();
   Future<FavAndWatchlistResponse?> addToFavorite(FavoriteRequest movie);
   Future<FavAndWatchlistResponse?> addToWatchlist(WatchlistRequest movie);
+  Future<FavAndWatchlistResponse?> removeFromFavorite(FavoriteRequest movie);
   Future<List<Movie>?> searchMovie(String query);
 }
 
@@ -113,6 +114,7 @@ final class MovieService extends IMovieService {
     return response.data?.backdrops;
   }
 
+  ///
   @override
   Future<List<Movie>?> getFavoriteMovies() async {
     final response =
@@ -120,7 +122,16 @@ final class MovieService extends IMovieService {
       ServicePaths.allFavoritesPath,
       parseModel: FavoriteAndWatchlist(),
       method: RequestType.GET,
+
+      ///todo: add session logic
+      queryParameters: Map.fromEntries([
+        MovieServiceQuery.makeQuery(
+          query: MovieServiceQuery.session_id,
+          value: ServicePaths.sessionId,
+        ),
+      ]),
     );
+    print(ServicePaths.allFavoritesPath);
     return response.data?.results;
   }
 
@@ -131,6 +142,14 @@ final class MovieService extends IMovieService {
       ServicePaths.allWatchlistPath,
       parseModel: FavoriteAndWatchlist(),
       method: RequestType.GET,
+
+      ///todo: add session logic
+      queryParameters: Map.fromEntries([
+        MovieServiceQuery.makeQuery(
+          query: MovieServiceQuery.session_id,
+          value: ServicePaths.sessionId,
+        ),
+      ]),
     );
     return response.data?.results;
   }
@@ -143,6 +162,35 @@ final class MovieService extends IMovieService {
       parseModel: FavAndWatchlistResponse(),
       method: RequestType.POST,
       data: movie,
+
+      ///todo: add session logic
+      queryParameters: Map.fromEntries([
+        MovieServiceQuery.makeQuery(
+          query: MovieServiceQuery.session_id,
+          value: ServicePaths.sessionId,
+        ),
+      ]),
+    );
+    return response.data;
+  }
+
+  @override
+  Future<FavAndWatchlistResponse?> removeFromFavorite(
+    FavoriteRequest movie,
+  ) async {
+    final response = await _networkManager
+        .send<FavAndWatchlistResponse, FavAndWatchlistResponse>(
+      ServicePaths.addToFavoritePath,
+      parseModel: FavAndWatchlistResponse(),
+      method: RequestType.POST,
+      data: movie,
+      ///todo: add session logic
+      queryParameters: Map.fromEntries([
+        MovieServiceQuery.makeQuery(
+          query: MovieServiceQuery.session_id,
+          value: ServicePaths.sessionId,
+        ),
+      ]),
     );
     return response.data;
   }
@@ -157,17 +205,25 @@ final class MovieService extends IMovieService {
       parseModel: FavAndWatchlistResponse(),
       method: RequestType.POST,
       data: movie,
+
+      ///todo: add session logic
+      queryParameters: Map.fromEntries([
+        MovieServiceQuery.makeQuery(
+          query: MovieServiceQuery.session_id,
+          value: ServicePaths.sessionId,
+        ),
+      ]),
     );
     return response.data;
   }
 
+  ///
   @override
   Future<List<Movie>?> searchMovie(String query) async {
     final response = await _networkManager.send<SearchResponse, SearchResponse>(
       ServicePaths.searchMoviePath,
       parseModel: SearchResponse(),
       method: RequestType.GET,
-      //use enums
       queryParameters: Map.fromEntries([
         MovieServiceQuery.makeQuery(
           query: MovieServiceQuery.query,

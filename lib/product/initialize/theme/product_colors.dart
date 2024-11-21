@@ -5,4 +5,5 @@ final class ProductColors {
   static const purple = Color(0xFF6C63FF);
   static const white = Color(0xFFFFFFFF);
   static Color backgroundColor = Colors.grey.shade900;
+  static Color red = Colors.red;
 }

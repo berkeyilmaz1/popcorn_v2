@@ -55,7 +55,8 @@
       "favorites": "Favorites",
       "noFavorites": "No favorites",
       "noFavoritesDescription": "You haven't added any movies to your favorites yet. Add movies to your favorites to easily find them later.",
-      "discoverMovies": "Discover Movies"
+      "discoverMovies": "Discover Movies",
+      "removeFromFavorites": "A movie removed from favorites"
     },
     "search":{
       "search": "Search",

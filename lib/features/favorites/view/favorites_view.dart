@@ -6,10 +6,14 @@ import 'package:popcorn_v2/features/favorites/cubit/favorite_state.dart';
 import 'package:popcorn_v2/features/favorites/view/mixin/favorites_view_mixin.dart';
 import 'package:popcorn_v2/product/base/base_state.dart';
 import 'package:popcorn_v2/product/initialize/localization/locale_keys.g.dart';
+import 'package:popcorn_v2/product/initialize/service/model/movie_model.dart';
+import 'package:popcorn_v2/product/initialize/theme/product_colors.dart';
 import 'package:popcorn_v2/product/utils/constants/product_styles.dart';
 import 'package:popcorn_v2/product/widgets/movie_card.dart';
 import 'package:popcorn_v2/product/widgets/movie_rating.dart';
 import 'package:popcorn_v2/product/widgets/widget_sizes.dart';
+
+part '../widgets/dismissible_movie_card.dart';
 
 final class FavoritesView extends StatefulWidget {
   const FavoritesView({super.key});
@@ -40,32 +44,14 @@ class _FavoritesViewState extends State<FavoritesView>
                 if (state.favoriteMovies == null) {
                   return const CircularProgressIndicator();
                 }
-                return SizedBox(
-                  height: WidgetSizes.spacingXxlL12,
-                  child: GestureDetector(
-                    onTap: () async {
-                      await navigateToDetail(
-                        context,
-                        state.favoriteMovies![index],
-                      );
-                    },
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: MovieCard(
-                            imageUrl: state.favoriteMovies?[index].posterPath,
-                          ),
-                        ),
-                        Expanded(
-                          flex: flexValue,
-                          child: MovieRating(
-                            movie: state.favoriteMovies![index],
-                            showRating: true,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+
+                final movie = state.favoriteMovies![index];
+
+                return DismissibleMovieCard(
+                  movie: movie,
+                  flexValue: flexValue,
+                  onTapped: () async => navigateToDetail(context, movie),
+                  movieKey: movie.id.toString(),
                 );
               },
             );
