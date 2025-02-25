@@ -1,15 +1,17 @@
 # 🍿 Popcorn  
 📌 **Project Status:** _Under development 🚧_  
+<p align="center">
 <img src="https://github.com/user-attachments/assets/b7757ee1-30cc-41f1-be63-0ced504b88a3" height="200">  
+</p>
 
-📽️ **Popcorn is a Flutter-based movie application that allows users to explore popular movies, create favorite lists, and view detailed information about each movie.**  
+ **📽️Popcorn is a Flutter-based movie application that allows users to explore popular movies, create favorite lists, and view detailed information about each movie.**  
 
 
 
 ## 🎬 App Preview  
+
 ![popcorn gif](https://github.com/user-attachments/assets/5843b893-7b89-4f13-82f8-f4c3893d6d87)  
 
----
 
 ## ✨ Features  
 ✔️ **Movie List** – Browse popular, most-watched, and top-rated movies.  
@@ -17,7 +19,6 @@
 ✔️ **🔍 Search** – Find the movies you're looking for easily.  
 ✔️ **❤️ Favorites** – Mark your favorite movies and create a personalized watchlist.  
 
----
 
 ## 🛠️ Technologies & Libraries  
 
